@@ -1,6 +1,7 @@
 package com.phxc.notenayhandmade;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Build;
@@ -13,6 +14,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     Button btn_addnote;
+    RecyclerView recyclerViewNotes;
 
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {

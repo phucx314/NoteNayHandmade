@@ -55,14 +55,14 @@
         android:fontFamily="@font/cruyffsansregular"
         android:text="Chua biet ghi cai j"
         android:textColor="@color/grey_light"
-        app:layout_constraintBottom_toTopOf="@+id/btn_addnote2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_addnote"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittxt_contents"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btn_addnote2"
+        android:id="@+id/btn_addnote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -75,4 +75,5 @@
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
