@@ -13,6 +13,6 @@ public interface NotesDAO {
     @Insert
     void insertNotes(Notes notes);
 
-    @Query("SELECT * FROM notes")
+    @Query("SELECT * FROM notes ORDER BY id DESC")
     List<Notes> getListNotes();
 }

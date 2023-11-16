@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NoteNayHandmade</string>
+    <string name="toAdd">Please add some notes!</string>
 </resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    app:cardCornerRadius="20dp"
+    android:layout_marginBottom="15dp"
+    app:cardBackgroundColor="@color/black_lighter">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="160sp"
+            android:layout_height="160sp"
+
+            android:src="@drawable/img"
+            android:scaleType="fitXY"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/title_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dau Buoi"
+                android:textSize="30sp"
+                android:fontFamily="@font/cruyffsansbold"
+                android:textColor="@color/green"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="30dp"
+                />
+
+            <TextView
+                android:id="@+id/contents_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="65dp"
+                android:text="Cai nay la noi dung"
+                android:textSize="25sp"
+                android:fontFamily="@font/cruyffsansregular"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="30dp"
+                />
+
+            <TextView
+                android:id="@+id/date_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:gravity="bottom"
+                android:text="Tuesday, Nov 14, 2023"
+                android:textSize="18sp"
+                android:fontFamily="@font/cruyffsansregular"
+                android:textColor="@color/grey_light"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="30dp"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>
