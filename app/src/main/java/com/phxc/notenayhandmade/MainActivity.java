@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_addnote;
+    Button btn_newnote;
     EditText et_search;
     RecyclerView recyclerView;
     NotesAdapter notesAdapter;
@@ -42,31 +42,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        et_search = findViewById(R.id.et_search);
-//        private void filterStr(String newText) {
-//            List<Notes> filterList = new ArrayList<>();
-//            for (Notes singleNote : notes) {
-//                if (singleNote.getTitle().toLowerCase().contains(newText.toLowerCase())
-//                        || singleNote.getContent().toLowerCase().contains(newText.toLowerCase())) {
-//                    filterList.add(singleNote);
-//                }
-//            }
-//            NotesAdapter.filteredList(filterList);
-//        }
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                filterStr(newText);
-//                return false;
-//            }
-//        });
-
-
         recyclerView = findViewById(R.id.recyclerView);
 
         NotesAdapter noteAdapter = new NotesAdapter();
@@ -76,37 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
         changeStatusbarColor_black();
 
-        btn_addnote.setOnClickListener(new View.OnClickListener() {
+        btn_newnote = findViewById(R.id.btn_newnote);
+        btn_newnote.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AddNoteActivity.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddNoteActivity.class));
             }
         });
-
-//        recyclerViewNotes.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//                notesAdapter.setScrollUp(dy > 10);
-//                if (dy != 0) {
-//                    searchView.clearFocus();
-//                }
-//            }
-//
-//            @Override
-//            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-//                super.onScrollStateChanged(recyclerView, newState);
-//                if (layoutManager != null) {
-//                    int[] arr = layoutManager.findFirstVisibleItemPositions(null);
-//                    List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
-//                    if (list.contains(0) || notes.isEmpty()) {
-//                        extendedFloatingActionButton.extend();
-//                    } else {
-//                        extendedFloatingActionButton.shrink();
-//                    }
-//                }
-//            }
-//        });
     }
 }

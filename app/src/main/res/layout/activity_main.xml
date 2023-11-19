@@ -97,7 +97,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_addnote"
+        android:id="@+id/btn_newnote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"

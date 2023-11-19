@@ -86,29 +86,8 @@ public class AddNoteActivity extends AppCompatActivity {
         btn_savenote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String title = edittxt_title.getText().toString();
-//                String contents = edittxt_contents.getText().toString();
-//                if (contents.isEmpty()) {
-//                    Toast.makeText(AddNoteActivity.this, getString(R.string.toAdd), Toast.LENGTH_SHORT).show();
-//                }
-//                notes.setTitle(title);
-//                notes.setContent(contents);
-////                notes.setDate(notes.getDate());
-//                StringBuilder temp = new StringBuilder();
-//                for (int i = 0; i < paths.size(); ++i) {
-//                    temp.append(paths.get(i)).append(" ");
-//                }
-////                notes.setImage(temp.toString());
-//                Intent intent = new Intent();
-////                intent.putExtra("notes", notes);
-//                setResult(Activity.RESULT_OK, intent);
-//                finish();
-////                Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
-////                startActivity(intent);
-                btn_savenote = findViewById(R.id.btn_savenote);
-                List<Notes> notesList = new ArrayList<Notes>();
-                notesList.add(new Notes("Title", "Content"));
-
+                String title = edittxt_title.getText().toString();
+                String contents = edittxt_contents.getText().toString();
 
             }
         });
