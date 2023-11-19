@@ -11,12 +11,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.phxc.notenayhandmade.Adapters.NotesAdapter;
-import com.phxc.notenayhandmade.Adapters.Test1Adapter;
 import com.phxc.notenayhandmade.Models.Notes;
-import com.phxc.notenayhandmade.Models.Test1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +23,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     Button btn_addnote;
+    EditText et_search;
     RecyclerView recyclerView;
     NotesAdapter notesAdapter;
     SearchView searchView;
@@ -42,29 +42,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_addnote = findViewById(R.id.btn_savenote);
-        List<Test1> testList = new ArrayList<Test1>();
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
-        testList.add(new Test1("Title 1", R.drawable.img));
+//        et_search = findViewById(R.id.et_search);
+//        private void filterStr(String newText) {
+//            List<Notes> filterList = new ArrayList<>();
+//            for (Notes singleNote : notes) {
+//                if (singleNote.getTitle().toLowerCase().contains(newText.toLowerCase())
+//                        || singleNote.getContent().toLowerCase().contains(newText.toLowerCase())) {
+//                    filterList.add(singleNote);
+//                }
+//            }
+//            NotesAdapter.filteredList(filterList);
+//        }
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                filterStr(newText);
+//                return false;
+//            }
+//        });
+
 
         recyclerView = findViewById(R.id.recyclerView);
 
-        Test1Adapter test1Adapter = new Test1Adapter(testList);
-        recyclerView.setAdapter(test1Adapter);
+        NotesAdapter noteAdapter = new NotesAdapter();
+        recyclerView.setAdapter(noteAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-
 
 
         changeStatusbarColor_black();

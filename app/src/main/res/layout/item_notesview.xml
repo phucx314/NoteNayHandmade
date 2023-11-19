@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         >
         <ImageView
-            android:id="@+id/image_view"
+            android:id="@+id/iv_image"
             android:layout_width="160sp"
             android:layout_height="160sp"
 
@@ -28,19 +28,19 @@
             >
 
             <TextView
-                android:id="@+id/title_view"
+                android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dau Buoi"
+                android:text="Day la title"
                 android:textSize="30sp"
                 android:fontFamily="@font/cruyffsansbold"
-                android:textColor="@color/green"
+                android:textColor="@color/white"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
                 />
 
             <TextView
-                android:id="@+id/contents_view"
+                android:id="@+id/tv_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxHeight="65dp"
@@ -53,7 +53,7 @@
                 />
 
             <TextView
-                android:id="@+id/date_view"
+                android:id="@+id/tv_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"

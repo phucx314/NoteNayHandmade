@@ -8,26 +8,25 @@ import java.io.Serializable;
 @Entity(tableName = "notes")
 public class Notes {
     @PrimaryKey(autoGenerate = true)
-    private int id;
-    private String title;
-    private String content;
+    long ID = 0;
+    String title = "";
+    String content = "";
+//    String date = "";
+//    boolean pinned = false;
+//    String image = "";
 
-    private String date;
 
-    public String getDate() {
-        return date;
+    public Notes(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public long getID() {
+        return ID;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setID(long ID) {
+        this.ID = ID;
     }
 
     public String getTitle() {
@@ -45,5 +44,29 @@ public class Notes {
     public void setContent(String content) {
         this.content = content;
     }
+
+//    public String getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(String date) {
+//        this.date = date;
+//    }
+//
+//    public boolean isPinned() {
+//        return pinned;
+//    }
+//
+//    public void setPinned(boolean pinned) {
+//        this.pinned = pinned;
+//    }
+//
+//    public String getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(String image) {
+//        this.image = image;
+//    }
 }
 

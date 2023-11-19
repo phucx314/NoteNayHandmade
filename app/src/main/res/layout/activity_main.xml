@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#141414"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -17,10 +17,11 @@
             android:id="@+id/appname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="30dp"
             android:fontFamily="@font/cruyffsansbold"
             android:text="Aurora Notes"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:textColor="#1ef76b"
             android:textSize="30sp" />
 
@@ -29,30 +30,81 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-15dp"
+            android:layout_marginLeft="30dp"
             android:fontFamily="@font/cruyffsansmedium"
             android:text="alpha version (alpha-1.0.1)"
             android:textColor="#666a63"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            >
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/tf_searchnote"
+                android:hint="Search your notes"
+                android:paddingLeft="20dp"
+                android:textColorHint="@color/grey_light"
+                android:textColor="@color/grey_light"
+                android:fontFamily="@font/cruyffsansregular"
+                />
+
+<!--            <ImageView-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:layout_marginLeft="-60dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:src="@drawable/ic_search"-->
+<!--                android:padding="13dp"-->
+<!--                />-->
+
+            <ImageButton
+                android:id="@+id/btn_notification"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:scaleType="fitXY"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/ic_notification_has_notification"/>
+
+            <ImageButton
+                android:id="@+id/btn_menu"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:scaleType="fitXY"
+                android:background="@drawable/ic_menu"/>
+
+
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_savenote"
+        android:id="@+id/btn_addnote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/btn_addnotes"
         android:fontFamily="@font/cruyffsansbold"
-        android:text="+ Add"
+        android:text="+ New"
         android:textColor="#141414"
         android:textSize="15sp"
         app:backgroundTint="@null"
