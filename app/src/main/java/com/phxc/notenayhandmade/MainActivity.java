@@ -13,6 +13,7 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.phxc.notenayhandmade.Adapters.NotesAdapter;
 import com.phxc.notenayhandmade.Adapters.Test1Adapter;
 import com.phxc.notenayhandmade.Models.Notes;
 import com.phxc.notenayhandmade.Models.Test1;

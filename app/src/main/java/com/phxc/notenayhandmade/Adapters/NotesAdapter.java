@@ -1,4 +1,4 @@
-package com.phxc.notenayhandmade;
+package com.phxc.notenayhandmade.Adapters;
 
 import android.view.View;
 
