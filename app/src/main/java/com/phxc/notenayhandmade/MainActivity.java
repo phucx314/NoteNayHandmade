@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.phxc.notenayhandmade.Adapters.NotesAdapter;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     SearchView et_search;
     Note selectedNotes;
     ImageView ic_pin;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     StaggeredGridLayoutManager layoutManager;
     ExtendedFloatingActionButton extendedFloatingActionButton;
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         unpin = findViewById(R.id.unpin);
         delete = findViewById(R.id.delete);
         ic_pin = findViewById(R.id.ic_pin);
-
+        swipeRefreshLayout = findViewById(R.id.swiperLayout);
     }
 
     @Override
@@ -103,6 +105,17 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             public boolean onQueryTextChange(String newText) {
                 filter(newText);
                 return false;
+            }
+        });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    notes = notesDB.notesDAO().getListNotes();
+                    updateRecycler(notes);
+                    swipeRefreshLayout.setRefreshing(false);
+                }, 1000);
             }
         });
     }
@@ -185,16 +198,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.settings) {
-            Toast.makeText(this, "item 1 clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fn Underdeveloping", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.select) {
-            Toast.makeText(this, "item 2 clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fn Underdeveloping", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.login) {
-            Toast.makeText(this, "item 3 clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fn Underdeveloping", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.trash) {
-            Toast.makeText(this, "item 4 clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fn Underdeveloping", Toast.LENGTH_SHORT).show();
             return true;
         }
 
@@ -210,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             notes.addAll(notesDB.notesDAO().getListNotes());
             notesAdapter.notifyDataSetChanged();
             return true;
-        }
+        } // cần phát triển thêm (List Pinned riêng)
         else if (itemId == R.id.unpin) {
             if(selectedNotes.isPinned()) {
                 notesDB.notesDAO().pin(selectedNotes.getID(), false);

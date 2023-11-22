@@ -104,13 +104,19 @@
             app:cardBackgroundColor="@color/black"
             android:outlineSpotShadowColor="@color/black">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/swiperLayout"
+                >
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
 
-                />
+                    />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
