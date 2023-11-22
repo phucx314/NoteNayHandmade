@@ -11,7 +11,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.phxc.notenayhandmade.Models.Note;
-import com.phxc.notenayhandmade.NotesClickListener;
+import com.phxc.notenayhandmade.NoteClickListener;
 import com.phxc.notenayhandmade.R;
 
 import java.util.List;
@@ -20,9 +20,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
 
     Context context;
     List<Note> noteList;
-    NotesClickListener listener;
+    NoteClickListener listener;
 
-    public NotesAdapter(Context context, List<Note> noteList, NotesClickListener listener) {
+    public NotesAdapter(Context context, List<Note> noteList, NoteClickListener listener) {
         this.context = context;
         this.noteList = noteList;
         this.listener = listener;

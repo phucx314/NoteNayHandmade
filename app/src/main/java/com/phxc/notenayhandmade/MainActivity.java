@@ -9,12 +9,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.phxc.notenayhandmade.Adapters.NotesAdapter;
@@ -24,7 +32,7 @@ import com.phxc.notenayhandmade.Models.Note;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     RecyclerView recyclerView;
     NotesAdapter notesAdapter;
@@ -32,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
     NotesDB notesDB;
 //    FloatingActionButton fab_add;
     Button btn_newnote;
+    ImageButton btn_notification;
+    ImageButton btn_menu;
+    MenuItem item1;
+    MenuItem item2;
+    MenuItem item3;
+    MenuItem item4;
+
     EditText et_search;
     SearchView searchView;
     StaggeredGridLayoutManager layoutManager;
@@ -43,19 +58,28 @@ public class MainActivity extends AppCompatActivity {
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
     }
 
+    // hàm ánh xạ ID
+    void anhXaID() {
+        recyclerView = findViewById(R.id.recyclerView);
+        btn_newnote = findViewById(R.id.btn_newnote);
+        btn_menu = findViewById(R.id.btn_menu);
+        item1 = findViewById(R.id.item1);
+        item2 = findViewById(R.id.item2);
+        item3 = findViewById(R.id.item3);
+        item4 = findViewById(R.id.item4);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        recyclerView = findViewById(R.id.recyclerView);
-        btn_newnote = findViewById(R.id.btn_newnote);
+        anhXaID();
+        changeStatusbarColor_black();
 
         notesDB = NotesDB.getInstance(this);
         notes = notesDB.notesDAO().getListNotes();
 
         updateRecycler(notes);
-        changeStatusbarColor_black();
 
         btn_newnote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,11 +119,11 @@ public class MainActivity extends AppCompatActivity {
     private void updateRecycler(List<Note> notes) {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL));
-        notesAdapter = new NotesAdapter(MainActivity.this, notes, notesClickListener);
+        notesAdapter = new NotesAdapter(MainActivity.this, notes, noteClickListener);
         recyclerView.setAdapter(notesAdapter);
     }
 
-    private final NotesClickListener notesClickListener = new NotesClickListener() {
+    private final NoteClickListener noteClickListener = new NoteClickListener() {
         @Override
         public void onClick(Note note) {
             Intent intent = new Intent(MainActivity.this, AddNoteActivity.class);
@@ -113,4 +137,31 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    public void showPopup(View view) {
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.item_menu);
+        popup.show();
+    }
+
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.item1) {
+            Toast.makeText(this, "item 1 clicked", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (itemId == R.id.item2) {
+            Toast.makeText(this, "item 2 clicked", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (itemId == R.id.item3) {
+            Toast.makeText(this, "item 3 clicked", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (itemId == R.id.item4) {
+            Toast.makeText(this, "item 4 clicked", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
+    }
 }

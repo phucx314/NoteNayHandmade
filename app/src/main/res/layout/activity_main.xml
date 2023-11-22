@@ -85,6 +85,7 @@
                 android:layout_height="40sp"
                 android:background="@drawable/ic_menu"
                 android:scaleType="fitXY"
+                android:onClick="showPopup"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
