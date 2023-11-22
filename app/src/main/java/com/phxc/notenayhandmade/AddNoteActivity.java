@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -24,6 +28,7 @@ public class AddNoteActivity extends AppCompatActivity {
     Button btn_savenote;
     Note note;
     boolean isOldNote = false;
+    Spannable spannable;
 
     //    private RecyclerView recyclerViewNotes;
     void changeStatusbarColor_black() {
@@ -77,6 +82,13 @@ public class AddNoteActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+//        Spannable spannable = new SpannableString("\n");
+//        Drawable android = this.getResources().getDrawable(R.drawable.img_1);
+//        android.setBounds(0,0,32,32);
+//        ImageSpan imageSpan = new ImageSpan(android, ImageSpan.ALIGN_BASELINE);
+//        spannable.setSpan(imageSpan, 3, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        edittxt_contents.setText(spannable);
     }
 
     // hàm này ánh xạ ID

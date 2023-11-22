@@ -4,22 +4,22 @@
 
     <item
         android:id="@+id/settings"
-        android:title="Settings (underdeveloping)"
+        android:title="Settings (underdevelopment)"
         />
 
     <item
         android:id="@+id/select"
-        android:title="Select (underdeveloping)"
+        android:title="Select (underdevelopment)"
         />
 
     <item
         android:id="@+id/login"
-        android:title="Login (underdeveloping)"
+        android:title="Login (underdevelopment)"
         />
 
     <item
         android:id="@+id/trash"
-        android:title="Trash (underdeveloping)"
+        android:title="Trash (underdevelopment)"
         />
 
 </menu>

@@ -198,16 +198,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.settings) {
-            Toast.makeText(this, "Fn Underdeveloping", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.select) {
-            Toast.makeText(this, "Fn Underdeveloping", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.login) {
-            Toast.makeText(this, "Fn Underdeveloping", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.trash) {
-            Toast.makeText(this, "Fn Underdeveloping", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
             return true;
         }
 

@@ -14,6 +14,7 @@ public class Note implements Serializable {
     String date = "";
     boolean pinned = false;
 //    String image = "";
+//    boolean isSelected = false;
 
 
     public Note() {
