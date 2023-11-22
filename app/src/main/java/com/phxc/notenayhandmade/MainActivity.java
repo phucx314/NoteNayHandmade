@@ -25,7 +25,9 @@ import com.phxc.notenayhandmade.Adapters.NotesAdapter;
 import com.phxc.notenayhandmade.Database.NotesDB;
 import com.phxc.notenayhandmade.Models.Notes;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,10 +61,14 @@ public class MainActivity extends AppCompatActivity {
         notes = notesDB.notesDAO().getListNotes();
 
         updateRecycler(notes);
+        changeStatusbarColor_black();
 
         btn_newnote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy - HH:mm a");
+//                Date date = new Date();
+
                 startActivityForResult(new Intent(MainActivity.this, AddNoteActivity.class), 101);
             }
         });

@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="150sp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     app:cardCornerRadius="20dp"
     android:layout_marginBottom="15dp"
-    app:cardBackgroundColor="@color/black_lighter">
+    app:cardBackgroundColor="@color/grey">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <ImageView
-            android:id="@+id/iv_image"
-            android:layout_width="160sp"
-            android:layout_height="160sp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="80sp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp">
 
-            android:src="@drawable/img"
-            android:scaleType="fitXY"
-            />
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="80sp"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/img_1"
+                android:scaleType="centerCrop"
+                />
+        </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -32,11 +39,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Day la title"
-                android:textSize="30sp"
+                android:textSize="24sp"
                 android:fontFamily="@font/cruyffsansbold"
                 android:textColor="@color/white"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 />
 
             <TextView
@@ -45,11 +54,13 @@
                 android:layout_height="wrap_content"
                 android:maxHeight="65dp"
                 android:text="Cai nay la noi dung"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/cruyffsansregular"
                 android:textColor="@color/white"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
+                android:maxLines="4"
+                android:ellipsize="end"
                 />
 
             <TextView
@@ -59,7 +70,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="bottom"
                 android:text="Tuesday, Nov 14, 2023"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 android:fontFamily="@font/cruyffsansregular"
                 android:textColor="@color/grey_light"
                 android:layout_marginLeft="20dp"

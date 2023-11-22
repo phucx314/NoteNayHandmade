@@ -52,7 +52,7 @@ public class AddNoteActivity extends AppCompatActivity {
                             .show();
                     return;
                 }
-                SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+                SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy - HH:mm");
                 Date date = new Date();
 
                 notes = new Notes();
