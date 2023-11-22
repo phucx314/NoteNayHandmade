@@ -78,6 +78,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
         return 0;
     }
 
+    public void filteredList(List<Note> filteredList) {
+        noteList = filteredList;
+        notifyDataSetChanged();
+    }
 
 }
 

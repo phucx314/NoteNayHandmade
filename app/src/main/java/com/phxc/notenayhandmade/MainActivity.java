@@ -46,9 +46,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     MenuItem item2;
     MenuItem item3;
     MenuItem item4;
+    SearchView et_search;
 
-    EditText et_search;
-    SearchView searchView;
     StaggeredGridLayoutManager layoutManager;
     ExtendedFloatingActionButton extendedFloatingActionButton;
 
@@ -67,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         item2 = findViewById(R.id.item2);
         item3 = findViewById(R.id.item3);
         item4 = findViewById(R.id.item4);
+        et_search = findViewById(R.id.et_search);
     }
 
     @Override
@@ -90,6 +90,30 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 startActivityForResult(new Intent(MainActivity.this, AddNoteActivity.class), 101);
             }
         });
+
+        et_search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return false;
+            }
+        });
+    }
+
+    private void filter(String newText) {
+        List<Note> filteredList = new ArrayList<>();
+        for(Note singleNote : notes) {
+            if(singleNote.getTitle().toLowerCase().contains(newText.toLowerCase())
+            || singleNote.getContent().toLowerCase().contains(newText.toLowerCase())) {
+                filteredList.add(singleNote);
+            }
+        }
+        notesAdapter.filteredList(filteredList);
     }
 
     @Override

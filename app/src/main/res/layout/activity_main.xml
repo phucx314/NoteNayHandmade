@@ -47,18 +47,20 @@
             android:layout_marginTop="25dp"
             android:layout_marginRight="30dp">
 
-            <EditText
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/et_search"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/tf_searchnote"
                 android:fontFamily="@font/cruyffsansregular"
-                android:hint="Search your note"
-                android:paddingLeft="20dp"
+                app:defaultQueryHint="Search your note"
+                app:iconifiedByDefault="false"
+                app:searchIcon="@null"
+                app:queryBackground="@android:color/transparent"
                 android:textColor="@color/grey_light"
-                android:textColorHint="@color/grey_light"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck"
+                />
 
             <!--            <ImageView-->
             <!--                android:layout_width="50sp"-->
