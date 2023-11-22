@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.phxc.notenayhandmade.Models.Note;
 
@@ -24,4 +25,7 @@ public interface NotesDAO {
 
     @Delete
     void delete(Note note);
+
+    @Query("UPDATE notes SET pinned = :pin WHERE ID = :ID")
+    void pin(long ID, boolean pin);
 }

@@ -12,7 +12,7 @@ public class Note implements Serializable {
     String title = "";
     String content = "";
     String date = "";
-//    boolean pinned = false;
+    boolean pinned = false;
 //    String image = "";
 
 
@@ -56,14 +56,14 @@ public class Note implements Serializable {
     public void setDate(String date) {
         this.date = date;
     }
-//
-//    public boolean isPinned() {
-//        return pinned;
-//    }
-//
-//    public void setPinned(boolean pinned) {
-//        this.pinned = pinned;
-//    }
+
+    public boolean isPinned() {
+        return pinned;
+    }
+
+    public void setPinned(boolean pinned) {
+        this.pinned = pinned;
+    }
 //
 //    public String getImage() {
 //        return image;

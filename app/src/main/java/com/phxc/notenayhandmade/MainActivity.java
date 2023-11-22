@@ -9,18 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.app.Activity;
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -42,11 +40,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     Button btn_newnote;
     ImageButton btn_notification;
     ImageButton btn_menu;
-    MenuItem item1;
-    MenuItem item2;
-    MenuItem item3;
-    MenuItem item4;
+    MenuItem settings, select, login, trash, pin, unpin, delete;
     SearchView et_search;
+    Note selectedNotes;
+    ImageView ic_pin;
 
     StaggeredGridLayoutManager layoutManager;
     ExtendedFloatingActionButton extendedFloatingActionButton;
@@ -62,11 +59,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         recyclerView = findViewById(R.id.recyclerView);
         btn_newnote = findViewById(R.id.btn_newnote);
         btn_menu = findViewById(R.id.btn_menu);
-        item1 = findViewById(R.id.item1);
-        item2 = findViewById(R.id.item2);
-        item3 = findViewById(R.id.item3);
-        item4 = findViewById(R.id.item4);
+        settings = findViewById(R.id.settings);
+        select = findViewById(R.id.select);
+        login = findViewById(R.id.login);
+        trash = findViewById(R.id.trash);
         et_search = findViewById(R.id.et_search);
+        pin = findViewById(R.id.pin);
+        unpin = findViewById(R.id.unpin);
+        delete = findViewById(R.id.delete);
+        ic_pin = findViewById(R.id.ic_pin);
+
     }
 
     @Override
@@ -158,11 +160,20 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         @Override
         public void onLongClick(Note note, CardView cvNoteCard) {
-
+            selectedNotes = new Note();
+            selectedNotes = note;
+            showOptionPopup(cvNoteCard);
         }
     };
 
-    public void showPopup(View view) {
+    private void showOptionPopup(CardView cvNoteCard) {
+        PopupMenu popup = new PopupMenu(this, cvNoteCard);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.longclicknote_menu);
+        popup.show();
+    }
+
+    public void showMenuPopup(View view) {
         PopupMenu popup = new PopupMenu(this, view);
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.item_menu);
@@ -173,19 +184,58 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId == R.id.item1) {
+        if (itemId == R.id.settings) {
             Toast.makeText(this, "item 1 clicked", Toast.LENGTH_SHORT).show();
             return true;
-        } else if (itemId == R.id.item2) {
+        } else if (itemId == R.id.select) {
             Toast.makeText(this, "item 2 clicked", Toast.LENGTH_SHORT).show();
             return true;
-        } else if (itemId == R.id.item3) {
+        } else if (itemId == R.id.login) {
             Toast.makeText(this, "item 3 clicked", Toast.LENGTH_SHORT).show();
             return true;
-        } else if (itemId == R.id.item4) {
+        } else if (itemId == R.id.trash) {
             Toast.makeText(this, "item 4 clicked", Toast.LENGTH_SHORT).show();
             return true;
         }
-        return false;
+
+        else if (itemId == R.id.pin) {
+            if(!selectedNotes.isPinned()) {
+                notesDB.notesDAO().pin(selectedNotes.getID(), true);
+                Toast.makeText(this, "Pinned", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(this, "Note already pinned", Toast.LENGTH_SHORT).show();
+            }
+            notes.clear();
+            notes.addAll(notesDB.notesDAO().getListNotes());
+            notesAdapter.notifyDataSetChanged();
+            return true;
+        }
+        else if (itemId == R.id.unpin) {
+            if(selectedNotes.isPinned()) {
+                notesDB.notesDAO().pin(selectedNotes.getID(), false);
+                Toast.makeText(this, "Unpinned", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(this, "Note is not pinned", Toast.LENGTH_SHORT).show();
+            }
+            notes.clear();
+            notes.addAll(notesDB.notesDAO().getListNotes());
+            notesAdapter.notifyDataSetChanged();
+            return true;
+        }
+        else if (itemId == R.id.delete) {
+            notesDB.notesDAO().delete(selectedNotes);
+            notes.remove(selectedNotes);
+            notesAdapter.notifyDataSetChanged();
+            Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
+            return true;
+        } // cần phát triển thêm (Trash)
+
+        else {
+            return false;
+        }
     }
+
+
 }

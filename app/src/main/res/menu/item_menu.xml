@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/item1"
-        android:title="Item One"
+        android:id="@+id/settings"
+        android:title="Settings (underdeveloping)"
         />
 
     <item
-        android:id="@+id/item2"
-        android:title="Item Two"
+        android:id="@+id/select"
+        android:title="Select (underdeveloping)"
         />
 
     <item
-        android:id="@+id/item3"
-        android:title="Item Three"
+        android:id="@+id/login"
+        android:title="Login (underdeveloping)"
         />
 
     <item
-        android:id="@+id/item4"
-        android:title="Item Four"
+        android:id="@+id/trash"
+        android:title="Trash (underdeveloping)"
         />
 
 </menu>

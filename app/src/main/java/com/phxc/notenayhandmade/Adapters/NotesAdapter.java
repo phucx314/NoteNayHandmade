@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,6 +54,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
 
         holder.tvDate.setText(note.getDate());
 
+        if(noteList.get(position).isPinned()) {
+            holder.ic_pin.setImageResource(R.drawable.ic_pinned);
+        }
+        else {
+            holder.ic_pin.setImageResource(0);
+        }
+
 
         holder.cvNoteCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +99,7 @@ class NotesViewHolder extends RecyclerView.ViewHolder {
     TextView tvTitle;
     TextView tvContent;
     TextView tvDate;
+    ImageView ic_pin;
 
 
     public NotesViewHolder(@NonNull View itemView) {
@@ -100,5 +109,6 @@ class NotesViewHolder extends RecyclerView.ViewHolder {
         tvTitle = itemView.findViewById(R.id.tv_title);
         tvContent = itemView.findViewById(R.id.tv_content);
         tvDate = itemView.findViewById(R.id.tv_date);
+        ic_pin = itemView.findViewById(R.id.ic_pin);
     }
 }
