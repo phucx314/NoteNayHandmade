@@ -51,12 +51,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/tf_searchnote"
+                android:fontFamily="@font/cruyffsansregular"
                 android:hint="Search your notes"
                 android:paddingLeft="20dp"
-                android:textColorHint="@color/grey_light"
                 android:textColor="@color/grey_light"
-                android:fontFamily="@font/cruyffsansregular"
-                />
+                android:textColorHint="@color/grey_light"
+                tools:ignore="TouchTargetSizeCheck" />
 
 <!--            <ImageView-->
 <!--                android:layout_width="50sp"-->
@@ -71,17 +71,19 @@
                 android:id="@+id/btn_notification"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:scaleType="fitXY"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/ic_notification_has_notification"/>
+                android:background="@drawable/ic_notification_has_notification"
+                android:scaleType="fitXY"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/btn_menu"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
+                android:background="@drawable/ic_menu"
                 android:scaleType="fitXY"
-                android:background="@drawable/ic_menu"/>
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
 

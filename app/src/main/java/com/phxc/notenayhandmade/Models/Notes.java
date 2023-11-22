@@ -5,16 +5,21 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+
 @Entity(tableName = "notes")
-public class Notes {
+public class Notes implements Serializable {
     @PrimaryKey(autoGenerate = true)
     long ID = 0;
     String title = "";
     String content = "";
-//    String date = "";
+    String date = "";
 //    boolean pinned = false;
 //    String image = "";
 
+
+    public Notes() {
+
+    }
 
     public Notes(String title, String content) {
         this.title = title;
@@ -45,13 +50,13 @@ public class Notes {
         this.content = content;
     }
 
-//    public String getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(String date) {
-//        this.date = date;
-//    }
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 //
 //    public boolean isPinned() {
 //        return pinned;

@@ -8,16 +8,19 @@ import androidx.room.RoomDatabase;
 
 import com.phxc.notenayhandmade.Models.Notes;
 
-@Database(entities = {Notes.class}, version = 1) // update sau
+@Database(entities = {Notes.class}, version = 1, exportSchema = false) // update sau
 public abstract class NotesDB extends RoomDatabase {
-    private static final String DATABASE_NAME = "database_notes.db";
-    private static NotesDB instance;
+    private static final String DATABASE_NAME = "database_auroranotes.db";
+    private static NotesDB notesDatabase;
 
     public static synchronized NotesDB getInstance(Context context) {
-        if(instance == null) {
-            instance = Room.databaseBuilder(context.getApplicationContext(), NotesDB.class, DATABASE_NAME).allowMainThreadQueries().build();
+        if(notesDatabase == null) {
+            notesDatabase = Room.databaseBuilder(context.getApplicationContext(), NotesDB.class, DATABASE_NAME)
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
+                    .build();
         }
-        return instance;
+        return notesDatabase;
     }
 
     public abstract NotesDAO notesDAO();
