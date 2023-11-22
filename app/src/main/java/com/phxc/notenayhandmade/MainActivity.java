@@ -4,11 +4,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import androidx.room.RoomDatabase;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,24 +15,20 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.phxc.notenayhandmade.Adapters.NotesAdapter;
 import com.phxc.notenayhandmade.Database.NotesDB;
-import com.phxc.notenayhandmade.Models.Notes;
+import com.phxc.notenayhandmade.Models.Note;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     NotesAdapter notesAdapter;
-    List<Notes> notes = new ArrayList<>();
+    List<Note> notes = new ArrayList<>();
     NotesDB notesDB;
 //    FloatingActionButton fab_add;
     Button btn_newnote;
@@ -75,13 +69,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == 101) {
             if(resultCode == Activity.RESULT_OK) {
-                Notes newNotes = (Notes) data.getSerializableExtra("note");
-                notesDB.notesDAO().insertNotes(newNotes);
+                Note newNote = (Note) data.getSerializableExtra("note");
+                notesDB.notesDAO().insertNotes(newNote);
+                notes.clear();
+                notes.addAll(notesDB.notesDAO().getListNotes());
+                notesAdapter.notifyDataSetChanged();
+            }
+        }
+        else if(requestCode == 102) {
+            if(resultCode == Activity.RESULT_OK) {
+                Note newNote = (Note) data.getSerializableExtra("note");
+                notesDB.notesDAO().update((int) newNote.getID(), newNote.getTitle(), newNote.getContent(), newNote.getDate());
                 notes.clear();
                 notes.addAll(notesDB.notesDAO().getListNotes());
                 notesAdapter.notifyDataSetChanged();
@@ -89,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void updateRecycler(List<Notes> notes) {
+    private void updateRecycler(List<Note> notes) {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL));
         notesAdapter = new NotesAdapter(MainActivity.this, notes, notesClickListener);
@@ -98,12 +101,15 @@ public class MainActivity extends AppCompatActivity {
 
     private final NotesClickListener notesClickListener = new NotesClickListener() {
         @Override
-        public void onClick(Notes notes) {
+        public void onClick(Note note) {
+            Intent intent = new Intent(MainActivity.this, AddNoteActivity.class);
+            intent.putExtra("old_note", note);
+            startActivityForResult(intent, 102);
 
         }
 
         @Override
-        public void onLongClick(Notes notes, CardView cvNoteCard) {
+        public void onLongClick(Note note, CardView cvNoteCard) {
 
         }
     };

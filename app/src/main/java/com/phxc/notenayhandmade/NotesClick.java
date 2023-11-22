@@ -2,10 +2,10 @@ package com.phxc.notenayhandmade;
 
 import androidx.cardview.widget.CardView;
 
-import com.phxc.notenayhandmade.Models.Notes;
+import com.phxc.notenayhandmade.Models.Note;
 
 public interface NotesClick {
-    void onClick(Notes notes, int position);
+    void onClick(Note note, int position);
 
-    void onLongClick(Notes notes, CardView cardView, int position);
+    void onLongClick(Note note, CardView cardView, int position);
 }

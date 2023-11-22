@@ -54,7 +54,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/tf_searchnote"
                 android:fontFamily="@font/cruyffsansregular"
-                android:hint="Search your notes"
+                android:hint="Search your note"
                 android:paddingLeft="20dp"
                 android:textColor="@color/grey_light"
                 android:textColorHint="@color/grey_light"

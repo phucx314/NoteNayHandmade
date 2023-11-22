@@ -1,13 +1,12 @@
 package com.phxc.notenayhandmade.Models;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
 @Entity(tableName = "notes")
-public class Notes implements Serializable {
+public class Note implements Serializable {
     @PrimaryKey(autoGenerate = true)
     long ID = 0;
     String title = "";
@@ -17,11 +16,11 @@ public class Notes implements Serializable {
 //    String image = "";
 
 
-    public Notes() {
+    public Note() {
 
     }
 
-    public Notes(String title, String content) {
+    public Note(String title, String content) {
         this.title = title;
         this.content = content;
     }

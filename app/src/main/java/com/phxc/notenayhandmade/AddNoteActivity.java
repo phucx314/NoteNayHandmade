@@ -1,7 +1,6 @@
 package com.phxc.notenayhandmade;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,20 +12,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.phxc.notenayhandmade.Adapters.NotesAdapter;
-import com.phxc.notenayhandmade.Models.Notes;
+import com.phxc.notenayhandmade.Models.Note;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class AddNoteActivity extends AppCompatActivity {
 
     EditText edittxt_title, edittxt_contents;
     TextView txt_date;
     Button btn_savenote;
-    Notes notes;
+    Note note;
+    boolean isOldNote = false;
 
     //    private RecyclerView recyclerViewNotes;
     void changeStatusbarColor_black() {
@@ -40,6 +37,17 @@ public class AddNoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_note);
         changeStatusbarColor_black();
         anhXaID();
+
+        note = new Note();
+        try { // tránh crash
+            note = (Note) getIntent().getSerializableExtra("old_note");
+            edittxt_title.setText(note.getTitle());
+            edittxt_contents.setText(note.getContent());
+            isOldNote = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         btn_savenote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,14 +63,16 @@ public class AddNoteActivity extends AppCompatActivity {
                 SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy - HH:mm");
                 Date date = new Date();
 
-                notes = new Notes();
+                if(isOldNote != true) {
+                    note = new Note();
+                }
 
-                notes.setTitle(title);
-                notes.setContent(content);
-                notes.setDate(formatter.format(date));
+                note.setTitle(title);
+                note.setContent(content);
+                note.setDate(formatter.format(date));
 
                 Intent intent = new Intent();
-                intent.putExtra("note", notes);
+                intent.putExtra("note", note);
                 setResult(Activity.RESULT_OK, intent);
                 finish();
             }

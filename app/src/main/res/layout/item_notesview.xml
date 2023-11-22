@@ -59,7 +59,7 @@
                 android:textColor="@color/white"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
-                android:maxLines="4"
+                android:maxLines="3"
                 android:ellipsize="end"
                 />
 

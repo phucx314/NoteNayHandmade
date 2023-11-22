@@ -7,21 +7,21 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.phxc.notenayhandmade.Models.Notes;
+import com.phxc.notenayhandmade.Models.Note;
 
 import java.util.List;
 
 @Dao
 public interface NotesDAO {
     @Insert (onConflict = REPLACE)
-    void insertNotes(Notes notes);
+    void insertNotes(Note note);
 
-    @Query("SELECT * FROM notes ORDER BY id DESC")
-    List<Notes> getListNotes();
+    @Query("SELECT * FROM Notes ORDER BY ID DESC")
+    List<Note> getListNotes();
 
-//    @Query("UPDATE notes SET title = :title, content = :content WHERE ID = :ID")
-//    void update(int ID, String title, String content);
-//
-//    @Delete
-//    void delete(Notes notes);
+    @Query("UPDATE notes SET title = :title, content = :content, date = :date WHERE ID = :ID")
+    void update(long ID, String title, String content, String date);
+
+    @Delete
+    void delete(Note note);
 }

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.phxc.notenayhandmade.Models.Notes;
+import com.phxc.notenayhandmade.Models.Note;
 import com.phxc.notenayhandmade.NotesClickListener;
 import com.phxc.notenayhandmade.R;
 
@@ -19,17 +19,17 @@ import java.util.List;
 public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
 
     Context context;
-    List<Notes> notesList;
+    List<Note> noteList;
     NotesClickListener listener;
 
-    public NotesAdapter(Context context, List<Notes> notesList, NotesClickListener listener) {
+    public NotesAdapter(Context context, List<Note> noteList, NotesClickListener listener) {
         this.context = context;
-        this.notesList = notesList;
+        this.noteList = noteList;
         this.listener = listener;
     }
 
-    private void setData(List<Notes> list) {
-        this.notesList = list;
+    private void setData(List<Note> list) {
+        this.noteList = list;
         notifyDataSetChanged();
     }
 
@@ -42,39 +42,38 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
-        Notes notes = notesList.get(position);
-        if(notes == null) {
+        Note note = noteList.get(position);
+        if(note == null) {
             return;
         }
 
-        holder.tvTitle.setText(notes.getTitle());
+        holder.tvTitle.setText(note.getTitle());
 
-        holder.tvContent.setText(notes.getContent());
+        holder.tvContent.setText(note.getContent());
 
-        holder.tvDate.setText(notes.getDate());
+        holder.tvDate.setText(note.getDate());
 
-        // Lỗi ở cái đb này (để sửa sau)
 
-//        holder.cvNoteCard.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                listener.onClick(notesList.get(holder.getAdapterPosition()));
-//            }
-//        });
-//
-//        holder.cvNoteCard.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View view) {
-//                listener.onLongClick(notesList.get(holder.getAdapterPosition()), holder.cvNoteCard);
-//                return true;
-//            }
-//        });
+        holder.cvNoteCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onClick(noteList.get(holder.getAdapterPosition()));
+            }
+        });
+
+        holder.cvNoteCard.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                listener.onLongClick(noteList.get(holder.getAdapterPosition()), holder.cvNoteCard);
+                return true;
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        if(notesList != null) {
-            return notesList.size();
+        if(noteList != null) {
+            return noteList.size();
         }
         return 0;
     }
@@ -93,6 +92,7 @@ class NotesViewHolder extends RecyclerView.ViewHolder {
     public NotesViewHolder(@NonNull View itemView) {
         super(itemView);
 
+        cvNoteCard = itemView.findViewById(R.id.card_view);
         tvTitle = itemView.findViewById(R.id.tv_title);
         tvContent = itemView.findViewById(R.id.tv_content);
         tvDate = itemView.findViewById(R.id.tv_date);
