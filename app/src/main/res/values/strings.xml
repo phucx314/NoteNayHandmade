@@ -3,4 +3,7 @@
     <string name="toAdd">Please add some note!</string>
     <string name="version_name">alpha version (alpha-1.0.5)</string>
 
+    <string name="font_bold">cruyffsansbold</string>
+    <string name="font_regular">cruyffsansregular</string>
+
 </resources>

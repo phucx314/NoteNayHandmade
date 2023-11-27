@@ -1,11 +1,14 @@
 package com.phxc.notenayhandmade;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
@@ -13,8 +16,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static com.phxc.notenayhandmade.PermissionUtils.verifyStoragePermissions;
 
 import com.phxc.notenayhandmade.Models.Note;
 
@@ -29,6 +35,8 @@ public class AddNoteActivity extends AppCompatActivity {
     Note note;
     boolean isOldNote = false;
     Spannable spannable;
+    ImageView ivAddImageFromLocal;
+    ActivityResultLauncher<Intent> intentActivityResultLauncher, photoActivityResultLauncher;
 
     //    private RecyclerView recyclerViewNotes;
     void changeStatusbarColor_black() {
@@ -42,6 +50,7 @@ public class AddNoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_note);
         changeStatusbarColor_black();
         anhXaID();
+        verifyStoragePermissions(this);
 
         note = new Note();
         try { // tránh crash
@@ -83,6 +92,8 @@ public class AddNoteActivity extends AppCompatActivity {
             }
         });
 
+
+
 //        Spannable spannable = new SpannableString("\n");
 //        Drawable android = this.getResources().getDrawable(R.drawable.img_1);
 //        android.setBounds(0,0,32,32);
@@ -97,6 +108,7 @@ public class AddNoteActivity extends AppCompatActivity {
         edittxt_contents = findViewById(R.id.edittxt_contents);
         txt_date = findViewById(R.id.txt_date);
         btn_savenote = findViewById(R.id.btn_savenote);
+        ivAddImageFromLocal = findViewById(R.id.iv_add_image_from_local);
     }
 
 

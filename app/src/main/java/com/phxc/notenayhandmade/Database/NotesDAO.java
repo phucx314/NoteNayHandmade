@@ -17,7 +17,7 @@ public interface NotesDAO {
     @Insert (onConflict = REPLACE)
     void insertNotes(Note note);
 
-    @Query("SELECT * FROM Notes ORDER BY ID DESC")
+    @Query("SELECT * FROM Notes ORDER BY date DESC")
     List<Note> getListNotes();
 
     @Query("UPDATE notes SET title = :title, content = :content, date = :date WHERE ID = :ID")

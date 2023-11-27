@@ -16,7 +16,7 @@
         android:layout_marginEnd="30dp"
         android:backgroundTint="@color/green"
         android:ems="10"
-        android:fontFamily="@font/cruyffsansbold"
+        android:fontFamily="@font/bold"
         android:hint="Title goes here..."
         android:inputType="text"
         android:minHeight="48dp"
@@ -36,7 +36,7 @@
         android:autoLink="all"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:fontFamily="@font/cruyffsansregular"
+        android:fontFamily="@font/regular"
         android:gravity="start"
         android:hint="Write your note here..."
         android:inputType="textMultiLine"
@@ -52,28 +52,53 @@
         android:id="@+id/txt_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/cruyffsansregular"
+        android:fontFamily="@font/regular"
         android:text="Chua biet ghi cai j"
         android:textColor="@color/grey_light"
-        app:layout_constraintBottom_toTopOf="@+id/btn_savenote"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittxt_contents"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/btn_savenote"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_addnotes"
-        android:fontFamily="@font/cruyffsansbold"
-        android:text="Save"
-        android:textColor="#141414"
-        android:textSize="15sp"
-        app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_date"
+        android:layout_margin="30dp"
+        android:gravity="right"
+        >
+
+        <ImageView
+            android:id="@+id/iv_add_image_from_local"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_gravity="left"
+            android:padding="15dp"
+
+            android:src="@drawable/ic_add_photos_from_local"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_savenote"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_savenote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/btn_addnotes"
+            android:fontFamily="@font/bold"
+            android:text="Save"
+            android:textColor="#141414"
+            android:textSize="15sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
