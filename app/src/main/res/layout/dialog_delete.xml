@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/grey"
+    app:cardCornerRadius="20dp"
+    android:layout_marginHorizontal="45dp"
+    >
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:fontFamily="@font/regular"
+            android:text="Do you really want to permanently delete this note?"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0sp"
+                android:layout_height="50sp"
+                android:text="Cancel"
+                android:layout_weight="1"
+                android:layout_margin="20sp"
+                app:strokeColor="@color/green"
+                app:strokeWidth="1sp"
+                android:backgroundTint="@color/grey"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0sp"
+                android:layout_height="50sp"
+                android:text="Delete"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:layout_margin="20sp"
+                app:backgroundTint="@color/green"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>

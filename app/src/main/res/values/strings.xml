@@ -6,4 +6,6 @@
     <string name="font_bold">cruyffsansbold</string>
     <string name="font_regular">cruyffsansregular</string>
 
+    <string name="forgot_password"><u>Forgot password?</u></string>
+
 </resources>

@@ -30,9 +30,10 @@
     <EditText
         android:id="@+id/edittxt_contents"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="0dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="110dp"
         android:autoLink="all"
         android:backgroundTint="@color/white"
         android:ems="10"
@@ -44,31 +45,32 @@
         android:textColor="@color/white"
         android:textCursorDrawable="@null"
         android:textIsSelectable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittxt_title" />
-
-    <TextView
-        android:id="@+id/txt_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/regular"
-        android:text="Chua biet ghi cai j"
-        android:textColor="@color/grey_light"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittxt_contents"
+        app:layout_constraintTop_toBottomOf="@+id/edittxt_title"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_date"
         android:layout_margin="30dp"
         android:gravity="right"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittxt_contents"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="30dp">
+
+<!--        <TextView-->
+<!--            android:id="@+id/txt_date"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/regular"-->
+<!--            android:text="Chua biet ghi cai j"-->
+<!--            android:textColor="@color/grey_light"-->
+
+<!--            app:layout_constraintBottom_toTopOf="@+id/btn_savenote"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
         <ImageView
             android:id="@+id/iv_add_image_from_local"
@@ -82,23 +84,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_savenote"
             app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_savenote"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:background="@drawable/btn_addnotes"
+            android:layout_height="50sp"
             android:fontFamily="@font/bold"
             android:text="Save"
             android:textColor="#141414"
             android:textSize="15sp"
-            app:backgroundTint="@null"
+            app:backgroundTint="@color/green"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

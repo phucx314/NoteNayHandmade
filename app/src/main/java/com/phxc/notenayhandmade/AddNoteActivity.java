@@ -106,7 +106,7 @@ public class AddNoteActivity extends AppCompatActivity {
     void anhXaID() {
         edittxt_title = findViewById(R.id.edittxt_title);
         edittxt_contents = findViewById(R.id.edittxt_contents);
-        txt_date = findViewById(R.id.txt_date);
+//        txt_date = findViewById(R.id.txt_date);
         btn_savenote = findViewById(R.id.btn_savenote);
         ivAddImageFromLocal = findViewById(R.id.iv_add_image_from_local);
     }

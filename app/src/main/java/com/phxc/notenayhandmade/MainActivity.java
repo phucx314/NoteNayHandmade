@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -198,12 +199,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.settings) {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.select) {
             Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.login) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
             Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.trash) {
@@ -238,6 +241,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             return true;
         }
         else if (itemId == R.id.delete) {
+            
             notesDB.notesDAO().delete(selectedNotes);
             notes.remove(selectedNotes);
             notesAdapter.notifyDataSetChanged();

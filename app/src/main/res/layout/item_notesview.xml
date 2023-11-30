@@ -75,7 +75,7 @@
                     android:fontFamily="@font/regular"
                     android:maxHeight="65dp"
                     android:maxLines="3"
-                    android:text="Cai nay la noi dung"
+                    android:text="Cai nay la noi dung\nuagshuasdhjhd\nhjkahsdkhjasidhaskudhj\nuhschiiashiu"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
