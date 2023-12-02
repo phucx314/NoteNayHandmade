@@ -52,7 +52,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
 
         holder.tvContent.setText(note.getContent());
 
-        holder.tvDate.setText(note.getDate());
+        holder.tvDate.setText(note.getPattern());
 
         if(noteList.get(position).isPinned()) {
             holder.ic_pin.setImageResource(R.drawable.ic_pinned);

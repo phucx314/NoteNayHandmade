@@ -20,8 +20,8 @@ public interface NotesDAO {
     @Query("SELECT * FROM Notes ORDER BY date DESC")
     List<Note> getListNotes();
 
-    @Query("UPDATE notes SET title = :title, content = :content, date = :date WHERE ID = :ID")
-    void update(long ID, String title, String content, String date);
+    @Query("UPDATE notes SET title = :title, content = :content, date = :date, pattern = :pattern WHERE ID = :ID")
+    void update(long ID, String title, String content, String date, String pattern);
 
     @Delete
     void delete(Note note);

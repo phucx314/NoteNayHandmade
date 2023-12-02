@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     StaggeredGridLayoutManager layoutManager;
     ExtendedFloatingActionButton extendedFloatingActionButton;
+    ImageView btnProfile;
 
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         delete = findViewById(R.id.delete);
         ic_pin = findViewById(R.id.ic_pin);
         swipeRefreshLayout = findViewById(R.id.swiperLayout);
+        btnProfile = findViewById(R.id.btn_profile);
     }
 
     @Override
@@ -106,6 +108,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             public boolean onQueryTextChange(String newText) {
                 filter(newText);
                 return false;
+            }
+        });
+
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
 
@@ -148,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         else if(requestCode == 102) {
             if(resultCode == Activity.RESULT_OK) {
                 Note newNote = (Note) data.getSerializableExtra("note");
-                notesDB.notesDAO().update((int) newNote.getID(), newNote.getTitle(), newNote.getContent(), newNote.getDate());
+                notesDB.notesDAO().update((int) newNote.getID(), newNote.getTitle(), newNote.getContent(), newNote.getDate(), newNote.getPattern());
                 notes.clear();
                 notes.addAll(notesDB.notesDAO().getListNotes());
                 notesAdapter.notifyDataSetChanged();
@@ -162,6 +171,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         notesAdapter = new NotesAdapter(MainActivity.this, notes, noteClickListener);
         recyclerView.setAdapter(notesAdapter);
     }
+
+
 
     private final NoteClickListener noteClickListener = new NoteClickListener() {
         @Override
@@ -193,6 +204,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         popup.inflate(R.menu.item_menu);
         popup.show();
     }
+
 
 
     @Override
@@ -253,6 +265,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             return false;
         }
     }
+
 
 
 }

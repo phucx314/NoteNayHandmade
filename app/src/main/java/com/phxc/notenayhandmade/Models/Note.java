@@ -13,6 +13,7 @@ public class Note implements Serializable {
     String content = "";
     String date = "";
     boolean pinned = false;
+    String pattern = "";
 //    String image = "";
 //    boolean isSelected = false;
 
@@ -65,7 +66,16 @@ public class Note implements Serializable {
     public void setPinned(boolean pinned) {
         this.pinned = pinned;
     }
-//
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    //
 //    public String getImage() {
 //        return image;
 //    }

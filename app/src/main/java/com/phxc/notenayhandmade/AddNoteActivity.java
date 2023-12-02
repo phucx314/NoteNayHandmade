@@ -25,6 +25,8 @@ import static com.phxc.notenayhandmade.PermissionUtils.verifyStoragePermissions;
 import com.phxc.notenayhandmade.Models.Note;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class AddNoteActivity extends AppCompatActivity {
@@ -74,8 +76,8 @@ public class AddNoteActivity extends AppCompatActivity {
                             .show();
                     return;
                 }
-                SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy - HH:mm");
-                Date date = new Date();
+//                SimpleDateFormat formatter = new SimpleDateFormat("yyyy MM dd HH mm ss SSS");
+//                Date date = new Date();
 
                 if(isOldNote != true) {
                     note = new Note();
@@ -83,7 +85,8 @@ public class AddNoteActivity extends AppCompatActivity {
 
                 note.setTitle(title);
                 note.setContent(content);
-                note.setDate(formatter.format(date));
+                note.setDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd HH mm ss SSS"))); // setDate để thuận cho vệc sắp xếp note ko bị lỗi
+                note.setPattern(LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd, yyyy - HH:mm"))); // hiển thị trên tvDate
 
                 Intent intent = new Intent();
                 intent.putExtra("note", note);
