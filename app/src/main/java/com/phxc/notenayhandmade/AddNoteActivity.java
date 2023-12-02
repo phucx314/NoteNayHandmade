@@ -85,7 +85,7 @@ public class AddNoteActivity extends AppCompatActivity {
 
                 note.setTitle(title);
                 note.setContent(content);
-                note.setDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd HH mm ss SSS"))); // setDate để thuận cho vệc sắp xếp note ko bị lỗi
+                note.setDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd HH mm ss SSS"))); // setDate để thuận cho vệc sắp xếp notes ko bị lỗi
                 note.setPattern(LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd, yyyy - HH:mm"))); // hiển thị trên tvDate
 
                 Intent intent = new Intent();
