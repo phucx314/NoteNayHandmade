@@ -71,8 +71,13 @@ public class AddNoteActivity extends AppCompatActivity {
                 String title = edittxt_title.getText().toString();
                 String content = edittxt_contents.getText().toString();
 
-                if(content == null) {
-                    Toast.makeText(AddNoteActivity.this, "Add some contents my friend.", Toast.LENGTH_SHORT)
+                if(content.equals("")) {
+                    Toast.makeText(AddNoteActivity.this, "Add some notes my friend.", Toast.LENGTH_SHORT)
+                            .show();
+                    return;
+                }
+                if(title.equals("")) {
+                    Toast.makeText(AddNoteActivity.this, "Add title my friend.", Toast.LENGTH_SHORT)
                             .show();
                     return;
                 }
@@ -86,7 +91,7 @@ public class AddNoteActivity extends AppCompatActivity {
                 note.setTitle(title);
                 note.setContent(content);
                 note.setDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd HH mm ss SSS"))); // setDate để thuận cho vệc sắp xếp notes ko bị lỗi
-                note.setPattern(LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd, yyyy - HH:mm"))); // hiển thị trên tvDate
+                note.setPattern(LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd, yyyy - HH:mm"))); // hiển thị trên tvDate (ko biết sao bị lỗi hiển thị (đôi khi))
 
                 Intent intent = new Intent();
                 intent.putExtra("note", note);
