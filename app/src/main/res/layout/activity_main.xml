@@ -76,7 +76,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/tf_searchnote"
-                android:fontFamily="@font/regular"
+                app:fontFamily="@font/regular"
                 app:defaultQueryHint="Search your note"
                 app:iconifiedByDefault="false"
                 app:searchIcon="@null"

@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.phxc.notenayhandmade.Models.Note;
 
-@Database(entities = {Note.class}, version = 1, exportSchema = false) // update sau
+@Database(entities = {Note.class}, version = 2, exportSchema = false) // update sau
 public abstract class NotesDB extends RoomDatabase {
     private static final String DATABASE_NAME = "database_auroranotes.db";
     private static NotesDB notesDatabase;

@@ -13,7 +13,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     ImageButton btn_notification;
     ImageButton btn_menu;
     MenuItem settings, select, login, trash, pin, unpin, delete;
-    SearchView et_search;
+    SearchView sv_search;
     Note selectedNotes;
     ImageView ic_pin;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         select = findViewById(R.id.select);
         login = findViewById(R.id.login);
         trash = findViewById(R.id.trash);
-        et_search = findViewById(R.id.et_search);
+        sv_search = findViewById(R.id.et_search);
         pin = findViewById(R.id.pin);
         unpin = findViewById(R.id.unpin);
         delete = findViewById(R.id.delete);
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         });
 
-        et_search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        sv_search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
