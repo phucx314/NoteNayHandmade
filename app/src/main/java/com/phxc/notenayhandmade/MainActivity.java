@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     StaggeredGridLayoutManager layoutManager;
     ExtendedFloatingActionButton extendedFloatingActionButton;
-    ImageView btnProfile;
+//    ImageView btnProfile;
 
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         delete = findViewById(R.id.delete);
         ic_pin = findViewById(R.id.ic_pin);
         swipeRefreshLayout = findViewById(R.id.swiperLayout);
-        btnProfile = findViewById(R.id.btn_profile);
+//        btnProfile = findViewById(R.id.btn_profile);
     }
 
     @Override
@@ -110,12 +110,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         });
 
-        btnProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
+//        btnProfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//            }
+//        });
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

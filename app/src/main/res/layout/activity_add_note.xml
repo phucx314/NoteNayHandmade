@@ -84,16 +84,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_savenote"
             app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_savenote"
             android:layout_width="wrap_content"
-            android:layout_height="50sp"
+            android:layout_height="60sp"
             android:fontFamily="@font/bold"
             android:text="Save"
             android:textColor="#141414"
-            android:textSize="15sp"
+            android:textSize="16sp"
             app:backgroundTint="@color/green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

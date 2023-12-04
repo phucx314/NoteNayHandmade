@@ -2,10 +2,10 @@ package com.phxc.notenayhandmade;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
-    ImageView btnGoogle;
+    LinearLayoutCompat btnGoogle;
 
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // ánh xạ ID
     void anhXaID() {
-        btnGoogle = findViewById(R.id.ic_google);
+        btnGoogle = findViewById(R.id.btn_google);
     }
 
     @Override

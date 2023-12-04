@@ -150,7 +150,6 @@
                 app:strokeWidth="2sp"
                 app:strokeColor="@color/white"
                 app:backgroundTint="@color/transparent"
-                android:layout_gravity="right"
                 />
 
             <com.google.android.material.button.MaterialButton
@@ -163,7 +162,6 @@
                 android:textColor="#141414"
                 android:textSize="15sp"
                 app:backgroundTint="@color/green"
-                android:layout_gravity="right"
                 />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
