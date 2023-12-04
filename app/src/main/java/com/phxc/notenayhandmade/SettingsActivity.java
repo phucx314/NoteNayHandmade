@@ -2,6 +2,7 @@ package com.phxc.notenayhandmade;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +11,9 @@ import android.view.Window;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    LinearLayoutCompat theme;
-    LinearLayoutCompat trash;
-    LinearLayoutCompat login;
+    CardView theme;
+    CardView trash;
+    CardView login;
 
 
     // đổi màu status bar trên android (đen)
@@ -24,7 +25,7 @@ public class SettingsActivity extends AppCompatActivity {
     // ham anh xa id
     void anhXaID() {
         theme = findViewById(R.id.opt_theme);
-        trash = findViewById(R.id.opt_trash);
+//        trash = findViewById(R.id.opt_trash);
         login = findViewById(R.id.opt_login);
     }
 

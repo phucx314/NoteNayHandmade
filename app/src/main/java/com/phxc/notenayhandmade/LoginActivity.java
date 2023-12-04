@@ -6,8 +6,10 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
     LinearLayoutCompat btnGoogle;
+    Button btnSignup;
+    Button btnLogin;
 
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {
@@ -33,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     // ánh xạ ID
     void anhXaID() {
         btnGoogle = findViewById(R.id.btn_google);
+        btnLogin = findViewById(R.id.btn_login);
+        btnSignup = findViewById(R.id.btn_signup);
     }
 
     @Override
@@ -49,6 +55,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signIn();
+            }
+        });
+
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
             }
         });
     }

@@ -21,7 +21,7 @@
             android:layout_height="120sp"
             android:layout_gravity="center"
             android:layout_marginBottom="36dp"
-            android:src="@drawable/png_profilepic"
+            android:src="@drawable/png_signup"
             />
 
         <!--            <TextView-->
@@ -76,7 +76,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp">
+            android:layout_marginBottom="12dp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="60sp"
@@ -94,7 +94,6 @@
                 android:layout_marginLeft="10dp"
                 android:maxLines="1"
                 android:inputType="textPassword"
-                android:drawableEnd="@drawable/ic_eye"
                 android:paddingHorizontal="25dp"
                 android:background="@drawable/shape_greyfield_60"
                 />
@@ -121,14 +120,21 @@
 <!--                android:textColor="@color/grey_light"-->
 <!--                />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/forgot_password"
+            <Space
+                android:layout_width="60sp"
+                android:layout_height="60sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:hint="Re-enter password"
                 android:fontFamily="@font/regular"
-                android:textColor="@color/grey_light"
-                android:textSize="16sp"
-                android:layout_marginRight="12dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="10dp"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                android:paddingHorizontal="25dp"
+                android:background="@drawable/shape_greyfield_60"
                 />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -141,9 +147,10 @@
             <com.google.android.material.button.MaterialButton
                 android:layout_width="0sp"
                 android:layout_weight="1"
+                android:id="@+id/btn_login"
                 android:layout_height="60sp"
                 android:fontFamily="@font/bold"
-                android:text="Sign up"
+                android:text="Login"
                 android:layout_marginRight="12sp"
                 android:textColor="@color/white"
                 android:textSize="15sp"
@@ -154,55 +161,17 @@
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="0sp"
+                android:id="@+id/btn_signup"
                 android:layout_weight="1"
                 android:layout_height="60sp"
                 android:fontFamily="@font/bold"
-                android:text="Login"
+                android:text="Sign up"
                 android:layout_marginLeft="12sp"
                 android:textColor="#141414"
                 android:textSize="15sp"
                 app:backgroundTint="@color/green"
                 />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="36sp"
-            android:layout_height="6sp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/shape_greyfield_60"
-            />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="60sp"
-            android:background="@drawable/shape_greyfield_60"
-            android:id="@+id/btn_google"
-            >
-
-            <TextView
-                android:layout_width="0sp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Or login with Google"
-                android:layout_marginLeft="25dp"
-                android:layout_gravity="center"
-                android:textColor="@color/white"
-                android:fontFamily="@font/bold"
-                android:textSize="16sp"
-                />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="60sp"
-                android:layout_height="60sp"
-                android:layout_gravity="center"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/ic_google"
-                android:scaleType="fitXY"
-                android:padding="5dp"
-
-                />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

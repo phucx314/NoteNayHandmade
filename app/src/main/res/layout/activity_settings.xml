@@ -8,109 +8,189 @@
     android:orientation="vertical"
     android:background="@color/black">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_gravity="right"
-        android:src="@color/green"
-        />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@color/green"
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:layout_gravity="right"
+                android:src="@drawable/png_profilepic"
+                app:shapeAppearanceOverlay="@style/corner"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="0sp"
+                    android:text="UserName"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/bold"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp"
+                    android:layout_weight="1"
+                    android:text="email@email.com"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey"
+                    android:fontFamily="@font/regular"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView
         android:id="@+id/tv_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Settings"
+        android:layout_marginBottom="24dp"
         android:fontFamily="@font/bold"
         android:textSize="30sp"
         android:layout_marginHorizontal="30dp"
         android:textColor="@color/green"
         />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/opt_theme"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="20dp"
+        android:id="@+id/opt_theme"
+        app:cardBackgroundColor="@color/grey">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="12dp"
+            android:layout_marginHorizontal="20dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Theme"
+                android:fontFamily="@font/bold"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/tv_statusTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="You choose Default (Dark)"
+                android:fontFamily="@font/regular"
+                android:textSize="16sp"
+                android:textColor="@color/grey_light"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="20dp"
+        android:id="@+id/opt_login"
+        app:cardBackgroundColor="@color/grey"
         >
 
-        <TextView
-            android:id="@+id/tv_theme"
+        <androidx.appcompat.widget.LinearLayoutCompat
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="Theme"
-            android:fontFamily="@font/bold"
-            android:textColor="@color/white"
-            />
+            android:orientation="vertical"
+            android:layout_marginVertical="12dp"
+            android:layout_marginHorizontal="20dp"
+            >
 
-        <TextView
-            android:id="@+id/tv_statusTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="You choose Default (Dark)"
-            android:fontFamily="@font/regular"
-            android:textSize="16sp"
-            android:textColor="@color/grey_light"
-            />
+            <TextView
+                android:id="@+id/tv_manageaccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Login"
+                android:textColor="@color/white"
+                android:fontFamily="@font/bold"
+                />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:id="@+id/tv_accountstatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login to save your data"
+                android:fontFamily="@font/regular"
+                android:textSize="16sp"
+                android:textColor="@color/grey_light"
+                />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/opt_login"
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="30dp">
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/grey"
+        android:id="@+id/opt_trash">
 
-        <TextView
-            android:id="@+id/tv_manageaccount"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="Login"
-            android:textColor="@color/white"
-            android:fontFamily="@font/bold"
-            />
+            android:orientation="vertical"
+            android:layout_marginVertical="12dp"
+            android:layout_marginHorizontal="20dp"
+            >
 
-        <TextView
-            android:id="@+id/tv_accountstatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login to save your data"
-            android:fontFamily="@font/regular"
-            android:textSize="16sp"
-            android:textColor="@color/grey_light"
-            />
+            <TextView
+                android:id="@+id/tv_trash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Trash"
+                android:textColor="@color/white"
+                android:fontFamily="@font/bold"
+                />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:id="@+id/tv_trashitemcount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:text="Nothing in your Trash"
+                android:textColor="@color/grey_light"
+                android:textSize="16sp" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:id="@+id/opt_trash"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="30dp">
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/tv_trash"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="Trash"
-            android:textColor="@color/white"
-            android:fontFamily="@font/bold"
-            />
 
-        <TextView
-            android:id="@+id/tv_trashitemcount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nothing in your Trash"
-            android:fontFamily="@font/regular"
-            android:textSize="16sp"
-            android:textColor="@color/grey_light"
-            />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

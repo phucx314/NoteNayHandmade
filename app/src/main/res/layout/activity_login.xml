@@ -140,6 +140,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="0sp"
+                android:id="@+id/btn_signup"
                 android:layout_weight="1"
                 android:layout_height="60sp"
                 android:fontFamily="@font/bold"
@@ -156,6 +157,7 @@
             <com.google.android.material.button.MaterialButton
                 android:layout_width="0sp"
                 android:layout_weight="1"
+                android:id="@+id/btn_login"
                 android:layout_height="60sp"
                 android:fontFamily="@font/bold"
                 android:text="Login"
