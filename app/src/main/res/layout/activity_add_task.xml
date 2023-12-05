@@ -1,0 +1,28 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="horizontal"
+
+    >
+    <EditText
+        android:id="@+id/newTaskText"
+        android:layout_width="0sp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:background="@drawable/tf_addtaskcontent"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:gravity="center"
+        android:hint="Add new task in here" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/newTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/bold"
+        android:text="Save"
+        android:textColor="#141414"
+        android:backgroundTint="@color/green"
+        android:textSize="15sp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
