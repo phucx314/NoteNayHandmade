@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "561500528640",
+    "firebase_url": "https://note-nay-hand-made-default-rtdb.firebaseio.com",
     "project_id": "note-nay-hand-made",
     "storage_bucket": "note-nay-hand-made.appspot.com"
   },
@@ -27,3 +28,4 @@
   ],
   "configuration_version": "1"
 }
+
