@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1071798086259",
+    "firebase_url": "https://auroranotes1-default-rtdb.firebaseio.com",
+    "project_id": "auroranotes1",
+    "storage_bucket": "auroranotes1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071798086259:android:e713ecbb546b07bacd1806",
+        "android_client_info": {
+          "package_name": "com.phxc.notenayhandmade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071798086259-ccv70r5aae7evkgj6ltlkne521dnoo4o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.phxc.notenayhandmade",
+            "certificate_hash": "5a73679bd43163fcbe89944e999b0d36daaab782"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfWixfC-uzZ-Co_0DXaveA8Oe3kBL07gQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
