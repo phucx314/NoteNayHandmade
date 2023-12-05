@@ -1,5 +1,6 @@
 package com.phxc.notenayhandmade;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -18,12 +20,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
+//        ImageView btnGoogle;
+    private FirebaseAuth mAuth;
+    EditText edit_emaillogin, edit_passwordlogin;
+    Button btn_login;
     LinearLayoutCompat btnGoogle;
     Button btnSignup;
     Button btnLogin;
@@ -36,8 +46,11 @@ public class LoginActivity extends AppCompatActivity {
 
     // ánh xạ ID
     void anhXaID() {
+
         btnGoogle = findViewById(R.id.btn_google);
-        btnLogin = findViewById(R.id.btn_login);
+        edit_emaillogin = findViewById(R.id.edit_emaillogin);
+        edit_passwordlogin = findViewById(R.id.edit_passwordlogin);
+        btn_login = findViewById(R.id.btn_login);
         btnSignup = findViewById(R.id.btn_signup);
     }
 
@@ -47,25 +60,52 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         changeStatusbarColor_black();
         anhXaID();
-
         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
-
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
             }
         });
-
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
             }
         });
+
+        mAuth = FirebaseAuth.getInstance();
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = edit_emaillogin.getText().toString();
+                String password = edit_passwordlogin.getText().toString();
+                login(email, password);
+                finish();
+            }
+        });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
+    private void login(String email, String pass) {
+        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Log.d("Debug","login successful");
+                }else {
+                    Log.d("Debug","login fail");
+                }
+            }
+        });
+    }
     void signIn() {
         startActivityForResult(googleSignInClient.getSignInIntent(), 1000);
 

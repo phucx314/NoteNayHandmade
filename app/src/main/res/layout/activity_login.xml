@@ -48,6 +48,7 @@
                 />
 
             <EditText
+                android:id="@+id/edit_emaillogin"
                 android:layout_width="match_parent"
                 android:layout_height="60sp"
                 android:hint="Your email"
@@ -86,6 +87,7 @@
                 />
 
             <EditText
+                android:id="@+id/edit_passwordlogin"
                 android:layout_width="match_parent"
                 android:layout_height="60sp"
                 android:hint="Your password"
@@ -179,6 +181,7 @@
             />
 
         <androidx.appcompat.widget.LinearLayoutCompat
+
             android:layout_width="match_parent"
             android:layout_height="60sp"
             android:background="@drawable/shape_greyfield_60"

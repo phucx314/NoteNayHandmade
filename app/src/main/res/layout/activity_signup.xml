@@ -48,6 +48,7 @@
                 />
 
             <EditText
+                android:id="@+id/edit_email_signup"
                 android:layout_width="match_parent"
                 android:layout_height="60sp"
                 android:hint="Your email"
@@ -86,6 +87,7 @@
                 />
 
             <EditText
+                android:id="@+id/edit_password_signup"
                 android:layout_width="match_parent"
                 android:layout_height="60sp"
                 android:hint="Your password"
@@ -125,6 +127,7 @@
                 android:layout_height="60sp" />
 
             <EditText
+                android:id="@+id/edit_repassword_signup"
                 android:layout_width="match_parent"
                 android:layout_height="60sp"
                 android:hint="Re-enter password"

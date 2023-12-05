@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     NotesAdapter notesAdapter;
     List<Note> notes = new ArrayList<>();
     NotesDB notesDB;
-//    FloatingActionButton fab_add;
-    Button btn_newnote;
+    //    FloatingActionButton fab_add;
+    Button btn_newnote, btn_new_task;
     ImageButton btn_notification;
     ImageButton btn_menu;
     MenuItem settings, select, login, trash, pin, unpin, delete;
@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         ic_pin = findViewById(R.id.ic_pin);
         swipeRefreshLayout = findViewById(R.id.swiperLayout);
 //        btnProfile = findViewById(R.id.btn_profile);
+        btn_new_task = findViewById(R.id.btn_new_task);
+//        btnProfile = findViewById(R.id.btn_profile);
     }
 
     @Override
@@ -94,6 +96,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 //                Date date = new Date();
 
                 startActivityForResult(new Intent(MainActivity.this, AddNoteActivity.class), 101);
+            }
+        });
+        btn_new_task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddTaskActivity.class));
             }
         });
 
@@ -133,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         List<Note> filteredList = new ArrayList<>();
         for(Note singleNote : notes) {
             if(singleNote.getTitle().toLowerCase().contains(newText.toLowerCase())
-            || singleNote.getContent().toLowerCase().contains(newText.toLowerCase())) {
+                    || singleNote.getContent().toLowerCase().contains(newText.toLowerCase())) {
                 filteredList.add(singleNote);
             }
         }
@@ -252,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             return true;
         }
         else if (itemId == R.id.delete) {
-            
+
             notesDB.notesDAO().delete(selectedNotes);
             notes.remove(selectedNotes);
             notesAdapter.notifyDataSetChanged();

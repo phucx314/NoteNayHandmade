@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "561500528640",
+    "firebase_url": "https://note-nay-hand-made-default-rtdb.firebaseio.com",
+    "project_id": "note-nay-hand-made",
+    "storage_bucket": "note-nay-hand-made.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561500528640:android:678f0da165e4af5394b8e5",
+        "android_client_info": {
+          "package_name": "com.phxc.notenayhandmade"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp7pseDwE59jfO28j4g1Z0kS7URr7s5EU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
