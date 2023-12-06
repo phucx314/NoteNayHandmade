@@ -116,7 +116,7 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="12dp"
         app:cardCornerRadius="20dp"
-        android:id="@+id/opt_login"
+        android:id="@+id/opt_logout"
         app:cardBackgroundColor="@color/grey"
         >
 
@@ -130,20 +130,20 @@
             >
 
             <TextView
-                android:id="@+id/tv_manageaccount"
+                android:id="@+id/tv_logoutaccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="Login"
+                android:text="Logout"
                 android:textColor="@color/white"
                 android:fontFamily="@font/bold"
                 />
 
             <TextView
-                android:id="@+id/tv_accountstatus"
+                android:id="@+id/tv_logoutstatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Login to save your data"
+                android:text="Logout to save your data"
                 android:fontFamily="@font/regular"
                 android:textSize="16sp"
                 android:textColor="@color/grey_light"
