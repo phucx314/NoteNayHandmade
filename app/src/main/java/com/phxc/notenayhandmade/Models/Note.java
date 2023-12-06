@@ -18,6 +18,14 @@ public class Note implements Serializable {
 //    boolean isSelected = false;
 
 
+    public Note(String title, String content, String date, boolean pinned, String pattern) {
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.pinned = pinned;
+        this.pattern = pattern;
+    }
+
     public Note() {
 
     }
@@ -25,6 +33,15 @@ public class Note implements Serializable {
     public Note(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    public Note(long ID, String title, String content, String date, boolean pinned, String pattern) {
+        this.ID = ID;
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.pinned = pinned;
+        this.pattern = pattern;
     }
 
     public long getID() {

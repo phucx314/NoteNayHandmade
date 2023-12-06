@@ -15,7 +15,8 @@ public class SettingsActivity extends AppCompatActivity {
     CardView trash;
     CardView login;
 
-
+    CardView clone;
+    CardView upload;
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {
         Window window = this.getWindow();
@@ -27,6 +28,9 @@ public class SettingsActivity extends AppCompatActivity {
         theme = findViewById(R.id.opt_theme);
 //        trash = findViewById(R.id.opt_trash);
         login = findViewById(R.id.opt_login);
+        clone = findViewById(R.id.cv_clonedata);
+        upload = findViewById(R.id.cv_uploaddata);
+
     }
 
     @Override
@@ -48,6 +52,12 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
+            }
+        });
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingsActivity.this, UploadActivity.class));
             }
         });
     }

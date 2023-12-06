@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "561500528640",
-    "project_id": "note-nay-hand-made",
-    "storage_bucket": "note-nay-hand-made.appspot.com"
+    "project_number": "122721435110",
+    "firebase_url": "https://aurora-notes-f1587-default-rtdb.firebaseio.com",
+    "project_id": "aurora-notes-f1587",
+    "storage_bucket": "aurora-notes-f1587.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:561500528640:android:678f0da165e4af5394b8e5",
+        "mobilesdk_app_id": "1:122721435110:android:21cf04f836787f80a5aa27",
         "android_client_info": {
           "package_name": "com.phxc.notenayhandmade"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAp7pseDwE59jfO28j4g1Z0kS7URr7s5EU"
+          "current_key": "AIzaSyAQPC5nTeMQG4Td-HMlSaYyrTHFkeXRc4c"
         }
       ],
       "services": {
