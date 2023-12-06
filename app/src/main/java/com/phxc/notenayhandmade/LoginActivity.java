@@ -13,6 +13,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayoutCompat btnGoogle;
     Button btnSignup;
     Button btnLogin;
+    TextView forgotpassword;
 
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {
@@ -52,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         edit_passwordlogin = findViewById(R.id.edit_passwordlogin);
         btn_login = findViewById(R.id.btn_login);
         btnSignup = findViewById(R.id.btn_signup);
+        forgotpassword = findViewById(R.id.tv_forgotpassword);
     }
 
     @Override
@@ -83,7 +86,13 @@ public class LoginActivity extends AppCompatActivity {
                 String email = edit_emaillogin.getText().toString();
                 String password = edit_passwordlogin.getText().toString();
                 login(email, password);
-                finish();
+
+            }
+        });
+        forgotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
             }
         });
     }
@@ -100,8 +109,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Log.d("Debug","login successful");
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
                 }else {
                     Log.d("Debug","login fail");
+                    Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
                 }
             }
         });

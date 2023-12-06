@@ -11,17 +11,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.phxc.notenayhandmade.Models.Note;
 
 public class UploadActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
+    FirebaseDatabase database;
     DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+
         mAuth = FirebaseAuth.getInstance();
+
         addNote();
         finish();
     }
@@ -32,6 +36,8 @@ public class UploadActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
     public void addNote() {
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("notes");
         //String id = myRef.push().getKey();
         String title = "Test title";
         String content = "Test content";

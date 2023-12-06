@@ -8,15 +8,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 public class SettingsActivity extends AppCompatActivity {
 
     CardView theme;
     CardView trash;
-    CardView login;
+    CardView logout;
 
     CardView clone;
     CardView upload;
+    FirebaseAuth mAuth;
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {
         Window window = this.getWindow();
@@ -27,12 +32,17 @@ public class SettingsActivity extends AppCompatActivity {
     void anhXaID() {
         theme = findViewById(R.id.opt_theme);
 //        trash = findViewById(R.id.opt_trash);
-        login = findViewById(R.id.opt_login);
+        logout = findViewById(R.id.opt_logout);
         clone = findViewById(R.id.cv_clonedata);
         upload = findViewById(R.id.cv_uploaddata);
 
     }
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
         changeStatusbarColor_black();
 
         anhXaID();
-
+        mAuth = FirebaseAuth.getInstance();
         theme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,9 +58,10 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                signOut();
                 startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
             }
         });
@@ -60,5 +71,9 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(new Intent(SettingsActivity.this, UploadActivity.class));
             }
         });
+    }
+    private void signOut(){
+        mAuth.signOut();
+        Toast.makeText(getApplicationContext(), "Logout successful", Toast.LENGTH_SHORT).show();
     }
 }

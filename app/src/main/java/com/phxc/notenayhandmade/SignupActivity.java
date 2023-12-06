@@ -63,8 +63,8 @@ public class SignupActivity extends AppCompatActivity {
                 }
                 else {
                     createNewUser(email,password);
-                    finish();
                     Toast.makeText(getApplicationContext(), "Create new user successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                 }
 
             }
