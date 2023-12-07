@@ -37,9 +37,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     NotesAdapter notesAdapter;
     List<Note> notes = new ArrayList<>();
     NotesDB notesDB;
-    //    FloatingActionButton fab_add;
     Button btn_newnote, btn_new_task;
-    ImageButton btn_notification;
     ImageButton btn_menu;
     MenuItem settings, select, login, trash, pin, unpin, delete;
     SearchView sv_search;
