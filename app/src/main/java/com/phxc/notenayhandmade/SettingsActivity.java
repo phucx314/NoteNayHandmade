@@ -17,6 +17,10 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.phxc.notenayhandmade.Models.Note;
+
+import org.w3c.dom.Text;
+
 public class SettingsActivity extends AppCompatActivity {
     private SwitchCompat modeSwitch;
     private boolean nightMode = false;
@@ -30,6 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
     CardView upload;
     FirebaseAuth mAuth;
     TextView tv_theme,tv_logout,tv_trash,tv_clone,tv_upload;
+    TextView tv_email;
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {
         Window window = this.getWindow();
@@ -49,6 +54,7 @@ public class SettingsActivity extends AppCompatActivity {
         tv_logout = findViewById(R.id.tv_logoutaccount);
         tv_trash = findViewById(R.id.tv_trash);
         tv_upload = findViewById(R.id.tv_uploaddata);
+        tv_email = findViewById(R.id.tv_email);
     }
     @Override
     protected void onStart() {
@@ -71,6 +77,14 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });
+
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("emaillogin")) {
+            String receivedData = intent.getStringExtra("emaillogin");
+            tv_email.setText(receivedData);
+        }
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
