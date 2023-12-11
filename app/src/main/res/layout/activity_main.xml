@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="?attr/colorPrimary">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayout"
@@ -125,14 +125,14 @@
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
             app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/black"
+            app:cardBackgroundColor="?attr/colorPrimary"
             android:outlineSpotShadowColor="@color/black">
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/swiperLayout"
-                >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"

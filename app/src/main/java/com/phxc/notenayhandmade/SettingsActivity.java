@@ -26,6 +26,8 @@ public class SettingsActivity extends AppCompatActivity {
     private boolean nightMode = false;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
+
+    private ThemeChangeListener themeChangeListener;
     CardView theme;
     CardView trash;
     CardView logout;
@@ -108,13 +110,15 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+
         modeSwitch = findViewById(R.id.mode_switch);
         sharedPreferences = getSharedPreferences("MODE",Context.MODE_PRIVATE);
-        nightMode = sharedPreferences.getBoolean("night", false);
+        nightMode = sharedPreferences.getBoolean("night", true);
 
         if (nightMode) {
             modeSwitch.setChecked(true);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            updateColors(nightMode);
         }
 
         modeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -126,16 +130,35 @@ public class SettingsActivity extends AppCompatActivity {
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     editor = sharedPreferences.edit();
-                    editor.putBoolean("night", true);
+                    editor.putBoolean("night", true);// truoc de la true
                 }
+
+                editor = sharedPreferences.edit();
+                editor.putBoolean("night", state);
+//                notifyThemeChange(state);
                 editor.apply();
+
             }
         });
         updateColors(nightMode);
+
     }
     private void signOut(){
         mAuth.signOut();
         Toast.makeText(getApplicationContext(), "Logout successful", Toast.LENGTH_SHORT).show();
+    }
+
+    private void notifyThemeChange(boolean isDarkThemeEnabled) {
+        ThemeHelper.setDarkThemeEnabled(isDarkThemeEnabled);
+
+        // Notify the listener (MainActivity) about the theme change
+        if (themeChangeListener != null) {
+            themeChangeListener.onThemeChanged(isDarkThemeEnabled);
+        }
+    }
+
+    public void setThemeChangeListener(ThemeChangeListener listener) {
+        this.themeChangeListener = listener;
     }
 
     private void updateColors(boolean isNightModeEnabled){
