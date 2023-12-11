@@ -22,6 +22,8 @@ public class SettingsActivity extends AppCompatActivity {
     private boolean nightMode = false;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
+
+    private ThemeChangeListener themeChangeListener;
     CardView theme;
     CardView trash;
     CardView logout;
@@ -105,9 +107,14 @@ public class SettingsActivity extends AppCompatActivity {
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     editor = sharedPreferences.edit();
-                    editor.putBoolean("night", true);
+                    editor.putBoolean("night", false);// truoc de la true
                 }
+
+                editor = sharedPreferences.edit();
+                editor.putBoolean("night", state);
+                notifyThemeChange(state);
                 editor.apply();
+
             }
         });
         updateColors(nightMode);
@@ -115,6 +122,19 @@ public class SettingsActivity extends AppCompatActivity {
     private void signOut(){
         mAuth.signOut();
         Toast.makeText(getApplicationContext(), "Logout successful", Toast.LENGTH_SHORT).show();
+    }
+
+    private void notifyThemeChange(boolean isDarkThemeEnabled) {
+        ThemeHelper.setDarkThemeEnabled(isDarkThemeEnabled);
+
+        // Notify the listener (MainActivity) about the theme change
+        if (themeChangeListener != null) {
+            themeChangeListener.onThemeChanged(isDarkThemeEnabled);
+        }
+    }
+
+    public void setThemeChangeListener(ThemeChangeListener listener) {
+        this.themeChangeListener = listener;
     }
 
     private void updateColors(boolean isNightModeEnabled){

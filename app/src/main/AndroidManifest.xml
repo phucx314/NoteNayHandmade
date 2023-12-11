@@ -27,6 +27,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Base.Theme.NoteNayHandmade"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"
