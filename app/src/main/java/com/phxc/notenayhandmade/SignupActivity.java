@@ -63,7 +63,6 @@ public class SignupActivity extends AppCompatActivity {
                 }
                 else {
                     createNewUser(email,password);
-                    Toast.makeText(getApplicationContext(), "Create new user successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                 }
 
@@ -81,9 +80,11 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(), "Create new user successful", Toast.LENGTH_SHORT).show();
                     Log.d("Debug","create new user successful");
                 }else {
                     Log.d("Debug","create new user fail");
+                    Toast.makeText(getApplicationContext(), "Create new user unsuccessful", Toast.LENGTH_SHORT).show();
                 }
             }
         });
