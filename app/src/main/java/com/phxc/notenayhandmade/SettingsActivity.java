@@ -60,6 +60,7 @@ public class SettingsActivity extends AppCompatActivity {
         tv_logout = findViewById(R.id.tv_logoutaccount);
         tv_trash = findViewById(R.id.tv_trash);
         tv_upload = findViewById(R.id.tv_uploaddata);
+        tv_email = findViewById(R.id.tv_email);
     }
     @Override
     protected void onStart() {
