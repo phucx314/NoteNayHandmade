@@ -1,14 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.NoteNayHandmade" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorSecondary">#E1E1E1</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <item name="colorOnPrimary">@color/grey</item>
-        <item name="colorPrimaryVariant">@color/grey_light</item>
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">#f0f1ea</item>
+
+        <item name="colorPrimary">#f0f1ea</item>
+        <item name="colorSecondary">#d8d9d3</item>
+        <item name="colorTertiary">#9f9f9f</item>
+        <item name="color">#13f76b</item>
+        <item name="colorOnBackground">#181818</item>
+        <item name="colorError">#d80505</item>
+        <item name="menu">@drawable/ic_menud</item>
+        <item name="textAppearanceDisplayLarge">@drawable/png_signupd</item>
     </style>
 
     <style name="Theme.NoteNayHandmade" parent="Base.Theme.NoteNayHandmade" />

@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="?attr/colorPrimary">
+    android:background="?attr/colorPrimary"
+    tools:context=".MainActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayout"
@@ -110,10 +110,12 @@
                 android:layout_width="60sp"
                 android:layout_height="60sp"
                 android:layout_marginLeft="24dp"
-                android:background="@drawable/ic_menu"
+                android:background="@drawable/tf_searchnote"
+                android:src="?attr/menu"
+                android:padding="20dp"
                 android:scaleType="fitXY"
                 android:onClick="showMenuPopup"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -126,13 +128,13 @@
             android:layout_marginBottom="25dp"
             app:cardCornerRadius="20dp"
             app:cardBackgroundColor="?attr/colorPrimary"
-            android:outlineSpotShadowColor="@color/black">
+            android:outlineSpotShadowColor="?attr/colorPrimary">
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/swiperLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="wrap_content"
+                android:id="@+id/swiperLayout"
+                >
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
