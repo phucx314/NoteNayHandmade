@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@color/black">
+    android:background="?attr/colorPrimary">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -52,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60sp"
                 android:hint="Your email"
+                android:textColorHint="?attr/colorOnPrimary"
                 android:fontFamily="@font/regular"
                 android:textColor="@color/white"
                 android:layout_marginLeft="10dp"
@@ -91,6 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60sp"
                 android:hint="Your password"
+                android:textColorHint="?attr/colorOnPrimary"
                 android:fontFamily="@font/regular"
                 android:textColor="@color/white"
                 android:layout_marginLeft="10dp"
@@ -149,11 +151,11 @@
                 android:fontFamily="@font/bold"
                 android:text="Sign up"
                 android:layout_marginRight="12sp"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="15sp"
                 app:strokeWidth="2sp"
                 app:strokeColor="@color/white"
-                app:backgroundTint="@color/transparent"
+                app:backgroundTint="?attr/colorPrimaryVariant"
                 android:layout_gravity="right"
                 />
 
@@ -196,7 +198,7 @@
                 android:text="Or login with Google"
                 android:layout_marginLeft="25dp"
                 android:layout_gravity="center"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnPrimary"
                 android:fontFamily="@font/bold"
                 android:textSize="16sp"
                 />

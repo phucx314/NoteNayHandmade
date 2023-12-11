@@ -30,7 +30,6 @@ public class CloneActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    NotesDB notesDB;
 
     // Chuyển biến notes lên cấp độ lớp
     private List<Note> notes = new ArrayList<>();
@@ -43,11 +42,12 @@ public class CloneActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("notes");
-        notesDB = NotesDB.getInstance(this);
+
         // Khởi chạy phương thức để đọc dữ liệu từ Realtime Database
         readDataFromRealtimeDB();
     }
 
+    // Các phương thức khác...
 
     private void readDataFromRealtimeDB() {
         // Lắng nghe sự thay đổi trên nút "notes"
@@ -60,10 +60,12 @@ public class CloneActivity extends AppCompatActivity {
                 // Lấy dữ liệu từ DataSnapshot và đưa vào danh sách
                 for (DataSnapshot noteSnapshot : dataSnapshot.getChildren()) {
                     Note note = noteSnapshot.getValue(Note.class);
-                    notesDB.notesDAO().insertNotes(note);
+                    notes.add(note);
                 }
-                startActivity(new Intent(CloneActivity.this, MainActivity.class));
-                finish();
+
+                // Gửi dữ liệu sang MainActivity
+                sendNotesToMainActivity();
+                // Ở đây, bạn có thể làm gì đó với danh sách 'notes', chẳng hạn hiển thị nó lên RecyclerView hoặc ListView
             }
 
             @Override
@@ -74,4 +76,10 @@ public class CloneActivity extends AppCompatActivity {
         });
     }
 
+    private void sendNotesToMainActivity() {
+        Intent intent = new Intent(CloneActivity.this, MainActivity.class);
+        intent.putExtra("notes", (Serializable) notes);
+        startActivity(intent);
+        finish();
+    }
 }

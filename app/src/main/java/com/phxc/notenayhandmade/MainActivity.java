@@ -34,6 +34,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
+    private boolean isDarkThemeEnabled = false;
     RecyclerView recyclerView;
     NotesAdapter notesAdapter;
     List<Note> notes = new ArrayList<>();
@@ -87,6 +88,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         notes = notesDB.notesDAO().getListNotes();
 
         updateRecycler(notes);
+//
+//
+//        if (isDarkThemeEnabled) {
+//            ThemeHelper.applyTheme(this);
+//        }
+//        SettingsActivity settingsActivity = new SettingsActivity();
+//        settingsActivity.setThemeChangeListener(this);
+
+//            onThemeChanged(isDarkThemeEnabled);
+
         btn_newnote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,6 +144,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 }, 1000);
             }
         });
+
+
     }
 
     private void filter(String newText) {
@@ -276,5 +289,28 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
 
-
+//    @Override
+//    public void onThemeChanged(boolean isDarkThemeEnabled) {
+//        ThemeHelper.applyTheme(this);
+//        updateUIColors(isDarkThemeEnabled);
+//    }
+//    public void onThemeChanged(boolean isDarkThemeEnabled) {
+//        ThemeHelper.setDarkThemeEnabled(true);
+//        updateUIColors(isDarkThemeEnabled);
+//    }
+    private void updateUIColors(boolean isDarkThemeEnabled) {
+        // Update UI colors based on the theme
+        // Add your code here to update UI elements as needed
+        if (isDarkThemeEnabled) {
+            // Nếu đang sử dụng chủ đề tối, thực hiện các thay đổi màu sắc tương ứng
+//            textView.setTextColor(getResources().getColor(R.color.white));
+            recyclerView.setBackgroundColor(getResources().getColor(R.color.grey));
+            // Thêm các thay đổi màu sắc khác tùy thuộc vào nhu cầu của bạn
+        } else {
+            // Nếu đang sử dụng chủ đề sáng, thực hiện các thay đổi màu sắc tương ứng
+//            textView.setTextColor(getResources().getColor(R.color.black));
+            recyclerView.setBackgroundColor(getResources().getColor(R.color.black));
+            // Thêm các thay đổi màu sắc khác tùy thuộc vào nhu cầu của bạn
+        }
+    }
 }
