@@ -285,11 +285,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
 
-    @Override
-    public void onThemeChanged(boolean isDarkThemeEnabled) {
-        ThemeHelper.applyTheme(this);
-        updateUIColors(isDarkThemeEnabled);
-    }
+//    @Override
+//    public void onThemeChanged(boolean isDarkThemeEnabled) {
+//        ThemeHelper.applyTheme(this);
+//        updateUIColors(isDarkThemeEnabled);
+//    }
 //    public void onThemeChanged(boolean isDarkThemeEnabled) {
 //        ThemeHelper.setDarkThemeEnabled(true);
 //        updateUIColors(isDarkThemeEnabled);

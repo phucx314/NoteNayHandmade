@@ -125,7 +125,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
             app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/black"
+            app:cardBackgroundColor="?attr/colorPrimary"
             android:outlineSpotShadowColor="@color/black">
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

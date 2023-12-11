@@ -96,13 +96,15 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+
         modeSwitch = findViewById(R.id.mode_switch);
         sharedPreferences = getSharedPreferences("MODE",Context.MODE_PRIVATE);
-        nightMode = sharedPreferences.getBoolean("night", false);
+        nightMode = sharedPreferences.getBoolean("night", true);
 
         if (nightMode) {
             modeSwitch.setChecked(true);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            updateColors(nightMode);
         }
 
         modeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -114,17 +116,18 @@ public class SettingsActivity extends AppCompatActivity {
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     editor = sharedPreferences.edit();
-                    editor.putBoolean("night", false);// truoc de la true
+                    editor.putBoolean("night", true);// truoc de la true
                 }
 
                 editor = sharedPreferences.edit();
                 editor.putBoolean("night", state);
-                notifyThemeChange(state);
+//                notifyThemeChange(state);
                 editor.apply();
 
             }
         });
         updateColors(nightMode);
+
     }
     private void signOut(){
         mAuth.signOut();
