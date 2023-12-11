@@ -216,7 +216,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.settings) {
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+//            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            String data = getIntent().getStringExtra("emaillogin");
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            intent.putExtra("emaillogin", data);
+            startActivity(intent);
             Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.select) {

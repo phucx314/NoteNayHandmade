@@ -1,10 +1,12 @@
 package com.phxc.notenayhandmade;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.phxc.notenayhandmade.Models.Note;
+
 public class SettingsActivity extends AppCompatActivity {
     private SwitchCompat modeSwitch;
     private boolean nightMode = false;
@@ -30,6 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
     CardView upload;
     FirebaseAuth mAuth;
     TextView tv_theme,tv_logout,tv_trash,tv_clone,tv_upload;
+    TextView tv_email;
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {
         Window window = this.getWindow();
@@ -49,6 +54,7 @@ public class SettingsActivity extends AppCompatActivity {
         tv_logout = findViewById(R.id.tv_logoutaccount);
         tv_trash = findViewById(R.id.tv_trash);
         tv_upload = findViewById(R.id.tv_uploaddata);
+        tv_email = findViewById(R.id.tv_email);
     }
     @Override
     protected void onStart() {
@@ -71,6 +77,11 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });
+
+        String data = getIntent().getStringExtra("emaillogin");
+        tv_email.setText(data);
+
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
