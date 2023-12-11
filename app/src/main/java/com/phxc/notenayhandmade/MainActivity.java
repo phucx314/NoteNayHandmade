@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -87,13 +88,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         notes = notesDB.notesDAO().getListNotes();
 
         updateRecycler(notes);
-
-
-        if (isDarkThemeEnabled) {
-            ThemeHelper.applyTheme(this);
-        }
-        SettingsActivity settingsActivity = new SettingsActivity();
-        settingsActivity.setThemeChangeListener(this);
+//
+//
+//        if (isDarkThemeEnabled) {
+//            ThemeHelper.applyTheme(this);
+//        }
+//        SettingsActivity settingsActivity = new SettingsActivity();
+//        settingsActivity.setThemeChangeListener(this);
 
 //            onThemeChanged(isDarkThemeEnabled);
 

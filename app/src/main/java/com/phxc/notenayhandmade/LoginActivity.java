@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.phxc.notenayhandmade.Models.Note;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -85,7 +86,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = edit_emaillogin.getText().toString();
                 String password = edit_passwordlogin.getText().toString();
-                login(email, password);
+                try {
+                    login(email, password);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Please enter email or password", Toast.LENGTH_SHORT).show();
+
+                }
+
+
 
             }
         });
@@ -111,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("Debug","login successful");
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
+
                 }else {
                     Log.d("Debug","login fail");
                     Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
