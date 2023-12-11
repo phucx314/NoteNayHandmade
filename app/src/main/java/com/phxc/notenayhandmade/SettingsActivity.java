@@ -85,9 +85,16 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SettingsActivity.this, UploadActivity.class));
+                Toast.makeText(getApplicationContext(), "Upload.....", Toast.LENGTH_SHORT).show();
             }
         });
-
+        clone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingsActivity.this, CloneActivity.class));
+                Toast.makeText(getApplicationContext(), "Clone.....", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         modeSwitch = findViewById(R.id.mode_switch);
         sharedPreferences = getSharedPreferences("MODE",Context.MODE_PRIVATE);

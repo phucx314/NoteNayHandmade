@@ -31,7 +31,7 @@ import com.phxc.notenayhandmade.Models.Note;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, ThemeChangeListener{
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     private boolean isDarkThemeEnabled = false;
     RecyclerView recyclerView;
