@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -86,22 +87,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         notes = notesDB.notesDAO().getListNotes();
 
         updateRecycler(notes);
-
-        // Kiểm tra Intent có chứa dữ liệu từ CloneActivity không
-        if (getIntent().hasExtra("notes")) {
-            List<Note> receivedNotes = (List<Note>) getIntent().getSerializableExtra("notes");
-            if (receivedNotes != null && !receivedNotes.isEmpty()) {
-                notes.addAll(receivedNotes);
-                updateRecycler(notes);
-            }
-        } else {
-            // Nếu không có dữ liệu từ Intent, lấy dữ liệu từ Local Database
-            notesDB = NotesDB.getInstance(this);
-            notes = notesDB.notesDAO().getListNotes();
-            updateRecycler(notes);
-        }
-
-
         btn_newnote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
