@@ -8,55 +8,63 @@
     android:orientation="vertical"
     android:background="?attr/colorPrimary">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
         android:layout_marginBottom="30dp"
-        android:background="@color/green"
-        >
+        app:cardCornerRadius="20dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="60sp"
-                android:layout_height="60sp"
-                android:layout_gravity="right"
-                android:src="@drawable/png_profilepic"
-                app:shapeAppearanceOverlay="@style/corner"
-                />
+            android:background="@color/green"
+            android:layout_marginTop="20dp"
+            >
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginLeft="12dp">
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_weight="1"
-                    android:layout_height="0sp"
-                    android:text="Welcome"
-                    android:textSize="24sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/bold"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="60sp"
+                    android:layout_height="60sp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/png_profilepic"
+                    app:shapeAppearanceOverlay="@style/corner"
                     />
 
-                <TextView
-                    android:id="@+id/tv_email"
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="0sp"
-                    android:layout_weight="1"
-                    android:text="email@email.com"
-                    android:textSize="16sp"
-                    android:textColor="@color/grey"
-                    android:fontFamily="@font/regular"
-                    />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="12dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="0sp"
+                        android:text="UserName"
+                        android:textSize="24sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="0sp"
+                        android:layout_weight="1"
+                        android:text="email@email.com"
+                        android:textSize="16sp"
+                        android:textColor="@color/grey"
+                        android:fontFamily="@font/regular"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tv_settings"
@@ -77,7 +85,7 @@
         android:layout_marginBottom="12dp"
         app:cardCornerRadius="20dp"
         android:id="@+id/opt_theme"
-        app:cardBackgroundColor="@color/grey">
+        app:cardBackgroundColor="?attr/colorSecondary">
 
         <androidx.appcompat.widget.LinearLayoutCompat
 
@@ -99,7 +107,7 @@
                     android:textSize="24sp"
                     android:text="Theme"
                     android:fontFamily="@font/bold"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/colorOnBackground"
                     />
 
                 <androidx.appcompat.widget.SwitchCompat
@@ -117,7 +125,7 @@
                 android:text="You choose Default (Dark)"
                 android:fontFamily="@font/regular"
                 android:textSize="16sp"
-                android:textColor="@color/grey_light"
+                android:textColor="?attr/colorTertiary"
                 />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -130,7 +138,7 @@
         android:layout_marginBottom="12dp"
         app:cardCornerRadius="20dp"
         android:id="@+id/opt_logout"
-        app:cardBackgroundColor="@color/grey"
+        app:cardBackgroundColor="?attr/colorSecondary"
         >
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -148,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:text="Logout"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnBackground"
                 android:fontFamily="@font/bold"
                 />
 
@@ -159,7 +167,7 @@
                 android:text="Logout to save your data"
                 android:fontFamily="@font/regular"
                 android:textSize="16sp"
-                android:textColor="@color/grey_light"
+                android:textColor="?attr/colorTertiary"
                 />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -171,7 +179,7 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="12dp"
         app:cardCornerRadius="20dp"
-        app:cardBackgroundColor="@color/grey"
+        app:cardBackgroundColor="?attr/colorSecondary"
         android:id="@+id/opt_trash">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -189,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:text="Trash"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnBackground"
                 android:fontFamily="@font/bold"
                 />
 
@@ -199,7 +207,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
                 android:text="Nothing in your Trash"
-                android:textColor="@color/grey_light"
+                android:textColor="?attr/colorTertiary"
                 android:textSize="16sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -211,7 +219,7 @@
         android:layout_marginBottom="12dp"
         app:cardCornerRadius="20dp"
         android:id="@+id/cv_clonedata"
-        app:cardBackgroundColor="@color/grey"
+        app:cardBackgroundColor="?attr/colorSecondary"
         >
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -229,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:text="Clone"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnBackground"
                 android:fontFamily="@font/bold"
                 />
 
@@ -240,7 +248,7 @@
                 android:text="Clone your data from cloud"
                 android:fontFamily="@font/regular"
                 android:textSize="16sp"
-                android:textColor="@color/grey_light"
+                android:textColor="?attr/colorTertiary"
                 />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -252,7 +260,7 @@
         android:layout_marginBottom="12dp"
         app:cardCornerRadius="20dp"
         android:id="@+id/cv_uploaddata"
-        app:cardBackgroundColor="@color/grey"
+        app:cardBackgroundColor="?attr/colorSecondary"
         >
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -270,7 +278,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:text="Upload"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnBackground"
                 android:fontFamily="@font/bold"
                 />
 
@@ -281,7 +289,7 @@
                 android:text="Upload your data to cloud"
                 android:fontFamily="@font/regular"
                 android:textSize="16sp"
-                android:textColor="@color/grey_light"
+                android:textColor="?attr/colorTertiary"
                 />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

@@ -2,12 +2,15 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.NoteNayHandmade" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorSecondary">@color/grey</item>
-        <item name="colorOnSecondary">@color/white</item>
-        <item name="colorOnPrimary">@color/grey_light</item>
-        <item name="colorPrimaryVariant">@color/white</item>
-        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:statusBarColor">#181818</item>
+
+        <item name="colorPrimary">#181818</item>
+        <item name="colorSecondary">#363636</item>
+        <item name="colorTertiary">#8c8c88</item>
+        <item name="color">#13f76b</item>
+        <item name="colorOnBackground">#f0f1ea</item>
+        <item name="colorError">#d80505</item>
+        <item name="menu">@drawable/ic_menu</item>
+        <item name="textAppearanceDisplayLarge">@drawable/png_signup</item>
     </style>
 </resources>
