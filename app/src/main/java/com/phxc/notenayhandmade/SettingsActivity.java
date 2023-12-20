@@ -1,12 +1,11 @@
 package com.phxc.notenayhandmade;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,11 +18,6 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.phxc.notenayhandmade.Models.Note;
-
-import org.w3c.dom.Text;
-
-import com.phxc.notenayhandmade.Models.Note;
 
 public class SettingsActivity extends AppCompatActivity {
     private SwitchCompat modeSwitch;
@@ -32,15 +26,12 @@ public class SettingsActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
 
     private ThemeChangeListener themeChangeListener;
-    CardView theme;
-    CardView trash;
-    CardView logout;
-
-    CardView clone;
-    CardView upload;
+    CardView theme, trash, logout, clone, upload;
     FirebaseAuth mAuth;
-    TextView tv_theme,tv_logout,tv_trash,tv_clone,tv_upload;
-    TextView tv_email;
+    TextView tv_theme, tv_logout, tv_trash, tv_clone, tv_upload;
+    TextView tv_email, tv_logoutstatus;
+    LinearLayoutCompat bg_settings;
+
     // đổi màu status bar trên android (đen)
     void changeStatusbarColor_black() {
         Window window = this.getWindow();
@@ -61,6 +52,8 @@ public class SettingsActivity extends AppCompatActivity {
         tv_trash = findViewById(R.id.tv_trash);
         tv_upload = findViewById(R.id.tv_uploaddata);
         tv_email = findViewById(R.id.tv_email);
+        tv_logoutstatus = findViewById(R.id.tv_logoutstatus);
+        bg_settings = findViewById(R.id.bg_settings);
     }
     @Override
     protected void onStart() {
@@ -74,7 +67,6 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         changeStatusbarColor_black();
-
         anhXaID();
         mAuth = FirebaseAuth.getInstance();
         theme.setOnClickListener(new View.OnClickListener() {
@@ -84,18 +76,34 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null) {
+            String uid = currentUser.getUid();
+            tv_logout.setText("Log out");
+            tv_logoutstatus.setText("Log out from this device");
+            logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    signOut();
+                    startActivity(new Intent(SettingsActivity.this, HomePage.class));
+                    finish();
+                }
+            });
+        }
+        else {
+            tv_logout.setText("Login");
+            tv_logoutstatus.setText("Login to save your data");
+            logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
+                }
+            });
+        }
+
         String data = getIntent().getStringExtra("emaillogin");
         tv_email.setText(data);
 
-
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signOut();
-                startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
-            }
-        });
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,12 +158,12 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void notifyThemeChange(boolean isDarkThemeEnabled) {
-        ThemeHelper.setDarkThemeEnabled(isDarkThemeEnabled);
-
-        // Notify the listener (MainActivity) about the theme change
-        if (themeChangeListener != null) {
-            themeChangeListener.onThemeChanged(isDarkThemeEnabled);
-        }
+//        ThemeHelper.setDarkThemeEnabled(isDarkThemeEnabled);
+//
+//        // Notify the listener (HomePage) about the theme change
+//        if (themeChangeListener != null) {
+//            themeChangeListener.onThemeChanged(isDarkThemeEnabled);
+//        }
     }
 
     public void setThemeChangeListener(ThemeChangeListener listener) {
@@ -165,12 +173,16 @@ public class SettingsActivity extends AppCompatActivity {
     private void updateColors(boolean isNightModeEnabled){
         int textColor;
         int cardColor;
+        int bg_settings;
         if (isNightModeEnabled){
             textColor = getResources().getColor(R.color.white);
             cardColor = getResources().getColor(R.color.grey);
-        }else {
+            bg_settings = getResources().getColor(R.color.black);
+        }
+        else {
             textColor = getResources().getColor(R.color.black);
             cardColor = getResources().getColor(R.color.white);
+            bg_settings = getResources().getColor(R.color.white);
         }
 
         tv_theme.setTextColor(textColor);
@@ -183,6 +195,7 @@ public class SettingsActivity extends AppCompatActivity {
         logout.setCardBackgroundColor(cardColor);
         tv_upload.setTextColor(textColor);
         upload.setCardBackgroundColor(cardColor);
+
     }
 
 

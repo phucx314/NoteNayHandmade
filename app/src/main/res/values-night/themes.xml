@@ -12,5 +12,7 @@
         <item name="colorError">#d80505</item>
         <item name="menu">@drawable/ic_menu</item>
         <item name="textAppearanceDisplayLarge">@drawable/png_signup</item>
+        <item name="colorControlActivated">#363636</item>
+        <!--        ở trên là màu lúc unselected -->
     </style>
 </resources>

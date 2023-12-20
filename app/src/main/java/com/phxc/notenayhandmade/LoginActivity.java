@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,19 +25,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.phxc.notenayhandmade.Models.Note;
 
 public class LoginActivity extends AppCompatActivity {
 
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
-//        ImageView btnGoogle;
     private FirebaseAuth mAuth;
     EditText edit_emaillogin, edit_passwordlogin;
     Button btn_login;
     LinearLayoutCompat btnGoogle;
     Button btnSignup;
-    Button btnLogin;
     TextView forgotpassword;
 
     // đổi màu status bar trên android (đen)
@@ -50,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
 
     // ánh xạ ID
     void anhXaID() {
-
         btnGoogle = findViewById(R.id.btn_google);
         edit_emaillogin = findViewById(R.id.edit_emaillogin);
         edit_passwordlogin = findViewById(R.id.edit_passwordlogin);
@@ -92,11 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Please enter email or password", Toast.LENGTH_SHORT).show();
-
                 }
-
-
-
             }
         });
         forgotpassword.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +100,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
     private void login(String email, String pass) {
@@ -119,9 +108,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Log.d("Debug","login successful");
-//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Toast.makeText(getApplicationContext(), "Welcome back my friend", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, HomePage.class);
                     intent.putExtra("emaillogin", email);
                     startActivity(intent);
                     finish();
@@ -134,7 +122,6 @@ public class LoginActivity extends AppCompatActivity {
     }
     void signIn() {
         startActivityForResult(googleSignInClient.getSignInIntent(), 1000);
-
     }
 
     @Override
@@ -142,7 +129,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1000) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-//            Toast.makeText(getApplicationContext(), "Logged in with G-account", Toast.LENGTH_SHORT).show();
             try {
                 task.getResult(ApiException.class);
             } catch (ApiException e) {
@@ -154,6 +140,7 @@ public class LoginActivity extends AppCompatActivity {
 
     void navToSecondActivity() {
         finish();
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        startActivity(new Intent(LoginActivity.this, HomePage.class));
+        finish();
     }
 }

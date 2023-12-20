@@ -36,7 +36,8 @@ public class UploadActivity extends AppCompatActivity {
         new LoadNotesTask().execute();
 
         finish();
-        startActivity(new Intent(UploadActivity.this, MainActivity.class));
+        startActivity(new Intent(UploadActivity.this, HomePage.class));
+        finish();
     }
 
     @Override

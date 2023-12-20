@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    tools:context=".HomePage">
+
+    <io.alterac.blurkit.BlurLayout
+        android:layout_width="match_parent"
+        android:layout_height="70sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="1dp"
+        app:blk_blurRadius="25"
+        app:blk_cornerRadius="55dp"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="70sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="1dp"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:src="@drawable/ic_notes"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20sp"
+                android:text="Notes"
+                android:fontFamily="@font/bold"
+                android:textColor="?attr/colorOnBackground"
+                android:gravity="center"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ImageView
+            android:layout_width="4sp"
+            android:layout_height="20sp"
+            android:background="@drawable/shape_greyfield_5"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:src="@drawable/ic_tasks"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20sp"
+                android:text="(Underdev)"
+                android:fontFamily="@font/bold"
+                android:textColor="?attr/colorOnBackground"
+                android:gravity="center"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_newnote"
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:fontFamily="@font/bold"
+            android:text="+ New"
+            android:layout_gravity="right|center"
+            android:textColor="#141414"
+            android:layout_marginRight="10dp"
+            android:textSize="15sp"
+            app:backgroundTint="@color/green"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-336dp">
+
+<!--        <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="15dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            >-->
+
+<!--            <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                android:layout_width="0sp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/appname"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+
+<!--                    android:fontFamily="@font/bold"-->
+<!--                    android:text="Aurora Notes"-->
+<!--                    android:textColor="#1ef76b"-->
+<!--                    android:textSize="30sp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/betatxt"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:layout_marginTop="-5dp"-->
+<!--                    android:fontFamily="@font/medium"-->
+<!--                    android:text="@string/version_name"-->
+<!--                    android:textColor="#666a63"-->
+<!--                    android:textSize="15sp" />-->
+
+<!--            </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+<!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/btn_profile"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="60sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="60sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:scaleType="fitXY"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:src="@drawable/img_defaultprofilepic"&ndash;&gt;-->
+<!--&lt;!&ndash;                />&ndash;&gt;-->
+
+<!--        </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="25dp">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingHorizontal="10dp"
+                android:background="@drawable/tf_searchnote"
+                app:fontFamily="@font/regular"
+                app:defaultQueryHint="Search your note"
+                app:iconifiedByDefault="false"
+                app:searchIcon="@null"
+                app:queryBackground="@android:color/transparent"
+                android:textColor="@color/grey_light"
+                tools:ignore="TouchTargetSizeCheck"/>
+
+            <ImageButton
+                android:id="@+id/btn_menu"
+                android:layout_width="40sp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/tf_searchnote"
+                android:src="?attr/menu"
+                android:padding="12dp"
+                android:scaleType="fitXY"
+                android:onClick="showMenuPopup"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="105dp"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="?attr/colorPrimary"
+            android:outlineSpotShadowColor="?attr/colorPrimary">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/swiperLayout"
+                >
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

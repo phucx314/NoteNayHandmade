@@ -13,11 +13,6 @@
         />
 
     <item
-        android:id="@+id/login"
-        android:title="Login (underdevelopment)"
-        />
-
-    <item
         android:id="@+id/trash"
         android:title="Trash (underdevelopment)"
         />

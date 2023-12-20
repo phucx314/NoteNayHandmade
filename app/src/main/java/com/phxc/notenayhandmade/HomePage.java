@@ -13,7 +13,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -32,16 +31,16 @@ import com.phxc.notenayhandmade.Models.Note;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class HomePage extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     private boolean isDarkThemeEnabled = false;
     RecyclerView recyclerView;
     NotesAdapter notesAdapter;
     List<Note> notes = new ArrayList<>();
     NotesDB notesDB;
-    Button btn_newnote, btn_new_task;
+    Button btn_newnote;
     ImageButton btn_menu;
-    MenuItem settings, select, login, trash, pin, unpin, delete;
+    MenuItem settings, select, trash, pin, unpin, delete;
     SearchView sv_search;
     Note selectedNotes;
     ImageView ic_pin;
@@ -64,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         btn_menu = findViewById(R.id.btn_menu);
         settings = findViewById(R.id.settings);
         select = findViewById(R.id.select);
-        login = findViewById(R.id.login);
         trash = findViewById(R.id.trash);
         sv_search = findViewById(R.id.et_search);
         pin = findViewById(R.id.pin);
@@ -72,45 +70,27 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         delete = findViewById(R.id.delete);
         ic_pin = findViewById(R.id.ic_pin);
         swipeRefreshLayout = findViewById(R.id.swiperLayout);
-//        btnProfile = findViewById(R.id.btn_profile);
-        btn_new_task = findViewById(R.id.btn_new_task);
-//        btnProfile = findViewById(R.id.btn_profile);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
         anhXaID();
         changeStatusbarColor_black();
 
         notesDB = NotesDB.getInstance(this);
         notes = notesDB.notesDAO().getListNotes();
 
-        updateRecycler(notes);
-//
-//
-//        if (isDarkThemeEnabled) {
-//            ThemeHelper.applyTheme(this);
-//        }
-//        SettingsActivity settingsActivity = new SettingsActivity();
-//        settingsActivity.setThemeChangeListener(this);
+//        // Đặt cờ để xóa tất cả các hoạt động trên đỉnh của LastActivity và LastActivity chính nó
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-//            onThemeChanged(isDarkThemeEnabled);
+        updateRecycler(notes);
 
         btn_newnote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy - HH:mm a");
-//                Date date = new Date();
-
-                startActivityForResult(new Intent(MainActivity.this, AddNoteActivity.class), 101);
-            }
-        });
-        btn_new_task.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddTaskActivity.class));
+                startActivityForResult(new Intent(HomePage.this, AddNoteActivity.class), 101);
             }
         });
 
@@ -126,13 +106,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 return false;
             }
         });
-
-//        btnProfile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//            }
-//        });
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -186,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     private void updateRecycler(List<Note> notes) {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL));
-        notesAdapter = new NotesAdapter(MainActivity.this, notes, noteClickListener);
+        notesAdapter = new NotesAdapter(HomePage.this, notes, noteClickListener);
         recyclerView.setAdapter(notesAdapter);
     }
 
@@ -195,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     private final NoteClickListener noteClickListener = new NoteClickListener() {
         @Override
         public void onClick(Note note) {
-            Intent intent = new Intent(MainActivity.this, AddNoteActivity.class);
+            Intent intent = new Intent(HomePage.this, AddNoteActivity.class);
             intent.putExtra("old_note", note);
             startActivityForResult(intent, 102);
 
@@ -206,7 +179,15 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             selectedNotes = new Note();
             selectedNotes = note;
             showOptionPopup(cvNoteCard);
+//
+//            if(!cvNoteCard.isSelected()) {
+//                cvNoteCard.setCardBackgroundColor(getColor(R.color.green));
+//            }
+//            else {
+//                cvNoteCard.setCardBackgroundColor(getColor(R.color.grey));
+//            }
         }
+
     };
 
     private void showOptionPopup(CardView cvNoteCard) {
@@ -229,18 +210,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.settings) {
-//            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+//            startActivity(new Intent(HomePage.this, SettingsActivity.class));
             String data = getIntent().getStringExtra("emaillogin");
-            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            Intent intent = new Intent(HomePage.this, SettingsActivity.class);
             intent.putExtra("emaillogin", data);
             startActivity(intent);
             Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.select) {
-            Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
-            return true;
-        } else if (itemId == R.id.login) {
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
             Toast.makeText(this, "Fn Underdevelopment", Toast.LENGTH_SHORT).show();
             return true;
         } else if (itemId == R.id.trash) {
@@ -299,18 +276,18 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 //        updateUIColors(isDarkThemeEnabled);
 //    }
     private void updateUIColors(boolean isDarkThemeEnabled) {
-        // Update UI colors based on the theme
-        // Add your code here to update UI elements as needed
-        if (isDarkThemeEnabled) {
-            // Nếu đang sử dụng chủ đề tối, thực hiện các thay đổi màu sắc tương ứng
-//            textView.setTextColor(getResources().getColor(R.color.white));
-            recyclerView.setBackgroundColor(getResources().getColor(R.color.grey));
-            // Thêm các thay đổi màu sắc khác tùy thuộc vào nhu cầu của bạn
-        } else {
-            // Nếu đang sử dụng chủ đề sáng, thực hiện các thay đổi màu sắc tương ứng
-//            textView.setTextColor(getResources().getColor(R.color.black));
-            recyclerView.setBackgroundColor(getResources().getColor(R.color.black));
-            // Thêm các thay đổi màu sắc khác tùy thuộc vào nhu cầu của bạn
-        }
+//        // Update UI colors based on the theme
+//        // Add your code here to update UI elements as needed
+//        if (isDarkThemeEnabled) {
+//            // Nếu đang sử dụng chủ đề tối, thực hiện các thay đổi màu sắc tương ứng
+////            textView.setTextColor(getResources().getColor(R.color.white));
+//            recyclerView.setBackgroundColor(getResources().getColor(R.color.grey));
+//            // Thêm các thay đổi màu sắc khác tùy thuộc vào nhu cầu của bạn
+//        } else {
+//            // Nếu đang sử dụng chủ đề sáng, thực hiện các thay đổi màu sắc tương ứng
+////            textView.setTextColor(getResources().getColor(R.color.black));
+//            recyclerView.setBackgroundColor(getResources().getColor(R.color.black));
+//            // Thêm các thay đổi màu sắc khác tùy thuộc vào nhu cầu của bạn
+//        }
     }
 }

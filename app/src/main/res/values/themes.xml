@@ -9,8 +9,10 @@
         <item name="color">#13f76b</item>
         <item name="colorOnBackground">#181818</item>
         <item name="colorError">#d80505</item>
-        <item name="menu">@drawable/ic_menud</item>
+        <item name="menu">@drawable/ic_menu_d</item>
         <item name="textAppearanceDisplayLarge">@drawable/png_signupd</item>
+        <item name="colorControlActivated">#9f9f9f</item>
+<!--        ở trên là màu lúc unselected -->
     </style>
 
     <style name="Theme.NoteNayHandmade" parent="Base.Theme.NoteNayHandmade" />
