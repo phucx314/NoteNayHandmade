@@ -103,23 +103,42 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
     private void login(String email, String pass) {
-        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Log.d("Debug","login successful");
-                    Toast.makeText(getApplicationContext(), "Welcome back my friend", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, HomePage.class);
-                    intent.putExtra("emaillogin", email);
-                    startActivity(intent);
-                    finish();
-                }else {
-                    Log.d("Debug","login fail");
-                    Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
-                }
+        if (containsSpecialCharacters(email)) {
+            Toast.makeText(getApplicationContext(), "Email cannot contain special characters", Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Log.d("Debug","login successful");
+                            Toast.makeText(getApplicationContext(), "Welcome back my friend", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, HomePage.class);
+                            intent.putExtra("emaillogin", email);
+                            startActivity(intent);
+                            finish();
+                        }else {
+                            Log.d("Debug","login fail");
+                            Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Please enter email or password", Toast.LENGTH_SHORT).show();
             }
-        });
+        }
+
     }
+
+    private boolean containsSpecialCharacters(String input) {
+        // Define the pattern for allowed characters (letters, digits, and whitespace)
+        String allowedCharacters = "a-zA-Z0-9@._\\s";
+
+        // Check if the input contains any characters other than the allowed ones
+        return !input.matches("[" + allowedCharacters + "]+");
+    }
+
     void signIn() {
         startActivityForResult(googleSignInClient.getSignInIntent(), 1000);
     }

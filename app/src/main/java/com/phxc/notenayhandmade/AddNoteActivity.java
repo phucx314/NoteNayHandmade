@@ -102,6 +102,8 @@ public class AddNoteActivity extends AppCompatActivity {
 
 
 
+
+
 //        Spannable spannable = new SpannableString("\n");
 //        Drawable android = this.getResources().getDrawable(R.drawable.img_1);
 //        android.setBounds(0,0,32,32);

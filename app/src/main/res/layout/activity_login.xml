@@ -156,6 +156,7 @@
                 app:strokeWidth="2sp"
                 app:strokeColor="?attr/colorTertiary"
                 app:backgroundTint="@color/transparent"
+                app:cornerRadius="10dp"
                 android:layout_gravity="right"
                 />
 
@@ -169,6 +170,7 @@
                 android:layout_marginLeft="12sp"
                 android:textColor="#141414"
                 android:textSize="15sp"
+                app:cornerRadius="10dp"
                 app:backgroundTint="@color/green"
                 android:layout_gravity="right"
                 />

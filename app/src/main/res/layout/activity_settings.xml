@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-20dp"
         android:layout_marginBottom="30dp"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="10dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="12dp"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="10dp"
         android:id="@+id/opt_theme"
         app:cardBackgroundColor="?attr/colorSecondary">
 
@@ -137,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="12dp"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="10dp"
         android:id="@+id/opt_logout"
         app:cardBackgroundColor="?attr/colorSecondary"
         >
@@ -179,7 +179,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="12dp"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="10dp"
         app:cardBackgroundColor="?attr/colorSecondary"
         android:id="@+id/opt_trash">
 
@@ -218,7 +218,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="12dp"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="10dp"
         android:id="@+id/cv_clonedata"
         app:cardBackgroundColor="?attr/colorSecondary"
         >
@@ -259,7 +259,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="12dp"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="10dp"
         android:id="@+id/cv_uploaddata"
         app:cardBackgroundColor="?attr/colorSecondary"
         >

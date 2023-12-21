@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -66,19 +67,37 @@ public class ResetPasswordActivity extends AppCompatActivity {
     }
     //Reset password
     private void resetPassword(String email) {
-        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Log.d("Debug","reset password successful");
-                    Toast.makeText(getApplicationContext(), "Reset password link has been sent to you", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
-                    finish();
-                }else {
-                    Log.d("Debug","reset password fail");
-                    Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
-                }
+
+
+        if (containsSpecialCharacters(email)) {
+            Toast.makeText(getApplicationContext(), "Email cannot contain special characters", Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Log.d("Debug","reset password successful");
+                            Toast.makeText(getApplicationContext(), "Reset password link has been sent to you", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
+                            finish();
+                        }else {
+                            Log.d("Debug","reset password fail");
+                            Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Please enter email or password", Toast.LENGTH_SHORT).show();
             }
-        });
+        }
+    }
+    private boolean containsSpecialCharacters(String input) {
+        // Define the pattern for allowed characters (letters, digits, and whitespace)
+        String allowedCharacters = "a-zA-Z0-9@._\\s";
+
+        // Check if the input contains any characters other than the allowed ones
+        return !input.matches("[" + allowedCharacters + "]+");
     }
 }

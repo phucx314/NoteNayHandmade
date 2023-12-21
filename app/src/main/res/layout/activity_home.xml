@@ -177,8 +177,8 @@
                 android:layout_width="40sp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="25dp"
-                android:background="@drawable/tf_searchnote"
                 android:src="?attr/menu"
+                android:background="@drawable/tf_searchnote"
                 android:padding="12dp"
                 android:scaleType="fitXY"
                 android:onClick="showMenuPopup"
@@ -191,8 +191,8 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="25dp"
-            android:layout_marginBottom="105dp"
-            app:cardCornerRadius="20dp"
+            android:layout_marginBottom="110dp"
+            app:cardCornerRadius="10dp"
             app:cardBackgroundColor="?attr/colorPrimary"
             android:outlineSpotShadowColor="?attr/colorPrimary">
 
